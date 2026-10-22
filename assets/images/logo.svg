@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="cubeTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cubeLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#312e81" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="cubeRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#4338ca" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Isometric Box / Room Base -->
+  <path d="M24 6L40 15.2V33.6L24 42.8L8 33.6V15.2L24 6Z" fill="#0f172a" stroke="url(#primaryGrad)" stroke-width="2" stroke-linejoin="round"/>
+  
+  <!-- Isometric Faces -->
+  <path d="M24 6L40 15.2L24 24.4L8 15.2L24 6Z" fill="url(#cubeTop)"/>
+  <path d="M8 15.2L24 24.4V42.8L8 33.6V15.2Z" fill="url(#cubeLeft)"/>
+  <path d="M40 15.2L24 24.4V42.8L40 33.6V15.2Z" fill="url(#cubeRight)"/>
+
+  <!-- Guided Spatial Movement Path & Arrow -->
+  <path d="M16 29L24 21L32 25" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  <circle cx="16" cy="29" r="2.5" fill="#38bdf8" />
+  <circle cx="32" cy="25" r="2.5" fill="#a855f7" />
+  <path d="M24 10L33 15" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-dasharray="2 2"/>
+</svg>
