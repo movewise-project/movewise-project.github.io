@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movewise | Evden Eve Doğrulanmış Taşınma ve İç Mekân Tasarımı</title>
+  <title>Movewise | Home-to-Home Moving and Verified Interior Design</title>
   
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Movewise: LiDAR taraması, fizik tabanlı geçiş analizi ve akıllı kamyon yükleme sıralamasıyla her eşya için eski evden yeni eve adım adım doğrulanmış taşınma ve iç mekân tasarımı. Bilkent Üniversitesi CS491 Kıdemli Tasarım Projesi.">
+  <meta name="description" content="Movewise: step-by-step verified moving and interior design for every item, from the old home to the new one, using LiDAR scanning, physics-based passage analysis and smart truck loading order. Bilkent University CS491 Senior Design Project.">
   <meta name="keywords" content="Movewise, Bilkent CS491, LiDAR room scanning, motion planning, interior design, piano movers problem, smart moving, truck loading">
   <meta name="author" content="Movewise Team - Bilkent University">
   
@@ -25,9 +25,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=2">
+
+  <!-- Flag JS early so intro/reveal states apply before first paint; safety net if scripts fail -->
+  <script>
+    document.documentElement.classList.add('js');
+    setTimeout(function () { document.documentElement.classList.add('is-loaded'); }, 2500);
+  </script>
 </head>
 <body>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
   <!-- Ambient Animated Background -->
   <div class="ambient-bg" aria-hidden="true">
@@ -40,7 +49,7 @@
   <!-- Header & Navigation -->
   <header class="site-header" id="site-header">
     <div class="container navbar">
-      <a href="#hero" class="brand" id="brand-logo" aria-label="Movewise Ana Sayfa">
+      <a href="#hero" class="brand" id="brand-logo" aria-label="Movewise Home">
         <img src="assets/images/logo.svg" alt="Movewise Logo" class="brand-icon">
         <span>Movewise</span>
         <span class="brand-tag">CS491</span>
@@ -48,31 +57,25 @@
 
       <nav>
         <ul class="nav-links" id="main-nav-links">
-          <li><a href="#about" class="nav-link" data-i18n="nav_about">Hakkında</a></li>
-          <li><a href="#pipeline" class="nav-link" data-i18n="nav_how">Nasıl Çalışır?</a></li>
-          <li><a href="#simulator" class="nav-link" data-i18n="nav_simulator">Geçiş Simülatörü</a></li>
-          <li><a href="#comparison" class="nav-link" data-i18n="nav_features">Farkımız</a></li>
-          <li><a href="#target" class="nav-link" data-i18n="nav_target">Kullanıcılar</a></li>
-          <li><a href="#team" class="nav-link" data-i18n="nav_team">Ekip & CS491</a></li>
-          <li><a href="#documents" class="nav-link" data-i18n="nav_docs">Dokümanlar</a></li>
+          <li><a href="#about" class="nav-link" data-i18n="nav_about">About</a></li>
+          <li><a href="#pipeline" class="nav-link" data-i18n="nav_how">How It Works</a></li>
+          <li><a href="#simulator" class="nav-link" data-i18n="nav_simulator">Fit Simulator</a></li>
+          <li><a href="#comparison" class="nav-link" data-i18n="nav_features">Features</a></li>
+          <li><a href="#target" class="nav-link" data-i18n="nav_target">Users</a></li>
+          <li><a href="#team" class="nav-link" data-i18n="nav_team">Team &amp; CS491</a></li>
+          <li><a href="#documents" class="nav-link" data-i18n="nav_docs">Documents</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <!-- Language Switcher -->
-        <div class="lang-toggle" role="group" aria-label="Dil Seçimi">
-          <button type="button" class="lang-btn active" id="lang-tr-btn" aria-label="Türkçe">TR</button>
-          <button type="button" class="lang-btn" id="lang-en-btn" aria-label="English">EN</button>
-        </div>
-
         <!-- Proposal PDF Direct CTA -->
-        <a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="nav-proposal-btn">
+        <a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="nav-proposal-btn" aria-label="Proposal PDF" title="Proposal PDF">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-          <span data-i18n="btn_proposal">Proje Teklifi (PDF)</span>
+          <span data-i18n="btn_proposal">Project Proposal (PDF)</span>
         </a>
 
         <!-- Mobile Toggle Button -->
-        <button class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Menüyü Aç/Kapat">
+        <button class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Toggle menu">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
       </div>
@@ -82,71 +85,74 @@
   <main>
     <!-- Hero Section -->
     <section class="hero-section" id="hero">
+      <!-- Blueprint canvas: LiDAR sweep + furniture route -->
+      <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
       <div class="container">
         <div class="hero-content">
-          <div class="badge badge-primary" data-i18n="hero_badge">
-            Bilkent Üniversitesi • CS491 Kıdemli Tasarım Projesi
+          <div class="badge badge-primary intro" style="--d: 0s;">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span data-i18n="hero_badge">Bilkent University • CS491 Senior Design Project</span>
           </div>
-          <h1 class="hero-title" data-i18n="hero_title">
-            Evden Eve Taşınma & Doğrulanmış İç Mekân Tasarımı
+          <h1 class="hero-title" data-i18n="hero_title" data-split>
+            Home-to-Home Moving &amp; Verified Interior Design
           </h1>
-          <p class="hero-subtitle" data-i18n="hero_subtitle">
-            Her bir eşya için eski kapıdan yeni odaya adım adım doğrulanmış bir yolculuk. LiDAR oda taraması, fizik tabanlı geçiş analizi ve akıllı kamyon yükleme planlaması tek çatı altında.
+          <p class="hero-subtitle intro" style="--d: 0.55s;" data-i18n="hero_subtitle">
+            A step-by-step verified journey for every item from old door to new room. LiDAR scanning, physics-backed passage feasibility, and smart truck loading order in one unified platform.
           </p>
-          <div class="hero-cta">
+          <div class="hero-cta intro" style="--d: 0.7s;">
             <a href="#pipeline" class="btn btn-primary" id="hero-explore-btn">
-              <span data-i18n="hero_btn_explore">Sistemi Keşfet</span>
+              <span data-i18n="hero_btn_explore">Explore System</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
             <a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" id="hero-pdf-btn">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"/></svg>
-              <span data-i18n="hero_btn_pdf">Öneri Raporunu İncele (PDF)</span>
+              <span data-i18n="hero_btn_pdf">Read Proposal (PDF)</span>
             </a>
           </div>
         </div>
 
         <!-- Hero Visual Showcase -->
-        <div class="hero-showcase" id="hero-showcase">
+        <div class="hero-showcase intro" id="hero-showcase" style="--d: 0.85s; --b: 0px;">
           <div class="hero-image-wrap">
-            <img src="assets/images/hero-concept.jpg" alt="Movewise 3D LiDAR Tarama ve Kamyon Planlama Konsepti" class="hero-image">
+            <img src="assets/images/hero-concept.jpg" alt="Movewise concept: 3D LiDAR scanning and truck loading plan" class="hero-image">
             
             <!-- Dynamic Floating Spatial Badges -->
             <div class="hero-overlay-tag hero-tag-1">
               <span class="tag-dot"></span>
-              <span data-i18n="tag_lidar">iPhone LiDAR 3D Oda & Eşya Taraması</span>
+              <span data-i18n="tag_lidar">iPhone LiDAR 3D Room &amp; Inventory Scan</span>
             </div>
             <div class="hero-overlay-tag hero-tag-2">
               <span class="tag-dot"></span>
-              <span data-i18n="tag_motion">Piyano Taşıyıcı Algoritması ile Darboğaz Analizi</span>
+              <span data-i18n="tag_motion">Piano Mover's Bottleneck Analysis</span>
             </div>
             <div class="hero-overlay-tag hero-tag-3">
               <span class="tag-dot"></span>
-              <span data-i18n="tag_layout">Doğrulanmış Yerleşim & Kamyon Yükleme</span>
+              <span data-i18n="tag_layout">Verified Layout &amp; Truck Loading Order</span>
             </div>
           </div>
         </div>
 
         <!-- Metrics & Highlights Strip -->
-        <div class="metrics-strip">
+        <div class="metrics-strip intro" style="--d: 1.05s; --b: 0px;">
           <div class="metric-card">
             <div class="metric-icon">🔄</div>
-            <div class="metric-num" data-i18n="metric_1_val">Uçtan Uca</div>
-            <div class="metric-label" data-i18n="metric_1_lbl">Eski evden yeni eve tek plan</div>
+            <div class="metric-num" data-i18n="metric_1_val">End-to-End</div>
+            <div class="metric-label" data-i18n="metric_1_lbl">One plan from old home to new home</div>
           </div>
           <div class="metric-card">
             <div class="metric-icon">📐</div>
-            <div class="metric-num" data-i18n="metric_2_val">LiDAR Destekli</div>
-            <div class="metric-label" data-i18n="metric_2_lbl">Milimetrik 3D mekân haritalama</div>
+            <div class="metric-num" data-i18n="metric_2_val">LiDAR Powered</div>
+            <div class="metric-label" data-i18n="metric_2_lbl">Accurate 3D spatial scanning</div>
           </div>
           <div class="metric-card">
             <div class="metric-icon">⚡</div>
-            <div class="metric-num" data-i18n="metric_3_val">Fizik Doğrulamalı</div>
-            <div class="metric-label" data-i18n="metric_3_lbl">Sığma, dönüş ve kapı açılım kontrolü</div>
+            <div class="metric-num" data-i18n="metric_3_val">Physics Verified</div>
+            <div class="metric-label" data-i18n="metric_3_lbl">Clearance, tilt &amp; door swing checks</div>
           </div>
           <div class="metric-card">
             <div class="metric-icon">🚛</div>
-            <div class="metric-num" data-i18n="metric_4_val">Akıllı Lojistik</div>
-            <div class="metric-label" data-i18n="metric_4_lbl">Ters sıralı kamyon yükleme planı</div>
+            <div class="metric-num" data-i18n="metric_4_val">Smart Logistics</div>
+            <div class="metric-label" data-i18n="metric_4_lbl">Reverse truck unloading sequence</div>
           </div>
         </div>
       </div>
@@ -156,10 +162,10 @@
     <section class="section" id="about">
       <div class="container">
         <div class="section-head">
-          <div class="badge badge-cyan" data-i18n="ps_badge">Problem & Çözüm</div>
-          <h2 class="section-title" data-i18n="ps_title">Taşınma Bir Tahmin Oyunu, Yerleşim İse Kör Bir Denemedir</h2>
+          <div class="badge badge-stone" data-i18n="ps_badge">Problem &amp; Solution</div>
+          <h2 class="section-title" data-i18n="ps_title">Moving is Guesswork, Furnishing is a Blind Experiment</h2>
           <p class="section-desc" data-i18n="ps_desc">
-            Bugüne kadar oda tarama, nakliyat teklifleri ve iç mekân tasarımı birbirinden kopuk araçlarla yapılıyordu. Movewise bu süreci baştan sona birleştiriyor.
+            Until now, room scanning, moving estimates, and interior design lived in isolated tools. Movewise connects the entire journey under one roof.
           </p>
         </div>
 
@@ -168,24 +174,24 @@
           <div class="contrast-card problem">
             <div class="contrast-header">
               <div class="contrast-icon">⚠️</div>
-              <h3 class="contrast-title" data-i18n="prob_title">Geleneksel Taşınmanın Çıkmazı</h3>
+              <h3 class="contrast-title" data-i18n="prob_title">The Moving Dilemma</h3>
             </div>
             <ul class="contrast-list">
               <li class="contrast-item">
                 <span class="contrast-bullet">✕</span>
-                <span data-i18n="prob_1">Eski evde harika duran kanepe, yeni evin dar merdiveninde veya kapısında takılıp kalır.</span>
+                <span data-i18n="prob_1">A sofa fitting the old home gets stuck in the new entrance or narrow staircase.</span>
               </li>
               <li class="contrast-item">
                 <span class="contrast-bullet">✕</span>
-                <span data-i18n="prob_2">Nakliyatçılar her iki evi de görmeden ezbere fiyat ve kamyon boyutu belirler.</span>
+                <span data-i18n="prob_2">Moving companies quote without seeing both homes, causing surprise delays.</span>
               </li>
               <li class="contrast-item">
                 <span class="contrast-bullet">✕</span>
-                <span data-i18n="prob_3">Yeni mobilya alırken geçiş koridorları, prizler ve gerçek ölçüler göz ardı edilir.</span>
+                <span data-i18n="prob_3">Furniture is bought without accounting for walkways, door swings, and sockets.</span>
               </li>
               <li class="contrast-item">
                 <span class="contrast-bullet">✕</span>
-                <span data-i18n="prob_4">Kamyona rastgele yüklenen eşyalar yeni evde karmaşaya ve hasara yol açar.</span>
+                <span data-i18n="prob_4">Unplanned truck loading creates chaos and damage during destination unloading.</span>
               </li>
             </ul>
           </div>
@@ -194,24 +200,24 @@
           <div class="contrast-card solution">
             <div class="contrast-header">
               <div class="contrast-icon">✨</div>
-              <h3 class="contrast-title" data-i18n="sol_title">Movewise'ın Bütünleşik Çözümü</h3>
+              <h3 class="contrast-title" data-i18n="sol_title">The Movewise Solution</h3>
             </div>
             <ul class="contrast-list">
               <li class="contrast-item">
                 <span class="contrast-bullet">✓</span>
-                <span data-i18n="sol_1">Her eşyanın eski odasından kamyona, oradan yeni odadaki yerine kadar adım adım geçiş simülasyonu.</span>
+                <span data-i18n="sol_1">Step-by-step motion feasibility from source room, through stairs, into the truck, and onto destination placement.</span>
               </li>
               <li class="contrast-item">
                 <span class="contrast-bullet">✓</span>
-                <span data-i18n="sol_2">iPhone LiDAR ile hızlı 3D tarama ve belirsizlik toleranslı hareket planlaması (motion planning).</span>
+                <span data-i18n="sol_2">Fast iPhone LiDAR scanning with uncertainty estimation and geometric motion planning.</span>
               </li>
               <li class="contrast-item">
                 <span class="contrast-bullet">✓</span>
-                <span data-i18n="sol_3">Ters sıralı kamyon yükleme (LIFO): Yeni eve ilk inecek eşya en son yüklenir.</span>
+                <span data-i18n="sol_3">Reverse unloading order (LIFO): items needed first are packed last.</span>
               </li>
               <li class="contrast-item">
                 <span class="contrast-bullet">✓</span>
-                <span data-i18n="sol_4">Katalog ürünleri ve mevcut mobilyalar için mimari kural doğrulamalı iç mekân tasarımı.</span>
+                <span data-i18n="sol_4">Guided interior layout honoring clearances, fixed utilities, and catalog dimensions.</span>
               </li>
             </ul>
           </div>
@@ -220,14 +226,20 @@
     </section>
 
     <!-- 4-Step Pipeline Section -->
-    <section class="section" id="pipeline" style="background: rgba(255, 255, 255, 0.01);">
+    <section class="section" id="pipeline" style="background: rgba(129, 151, 166, 0.025);">
       <div class="container">
         <div class="section-head">
-          <div class="badge badge-primary" data-i18n="pipe_badge">İşleyiş Mimarisi</div>
-          <h2 class="section-title" data-i18n="pipe_title">4 Aşamada Kusursuz Taşınma ve Tasarım</h2>
+          <div class="badge badge-primary" data-i18n="pipe_badge">System Architecture</div>
+          <h2 class="section-title" data-i18n="pipe_title">Seamless 4-Stage Move &amp; Design Pipeline</h2>
           <p class="section-desc" data-i18n="pipe_desc">
-            Mobil LiDAR tarama uygulamasından bulut tabanlı 3D planlama paneline uzanan kesintisiz iş akışı.
+            From the mobile LiDAR scanning app to the cloud-powered 3D web planning panel.
           </p>
+        </div>
+
+        <div class="pipeline-track" aria-hidden="true">
+          <span class="track-fill"></span>
+          <span class="track-pulse"></span>
+          <i class="track-node"></i><i class="track-node"></i><i class="track-node"></i><i class="track-node"></i>
         </div>
 
         <div class="pipeline-grid">
@@ -235,12 +247,12 @@
           <div class="pipeline-step">
             <span class="step-number">01</span>
             <div class="step-icon-wrap">📱</div>
-            <h3 class="step-title" data-i18n="step1_title">1. 3D LiDAR Tarama</h3>
+            <h3 class="step-title" data-i18n="step1_title">1. 3D LiDAR Scanning</h3>
             <p class="step-desc" data-i18n="step1_desc">
-              iPhone LiDAR ile odalar, kapılar, koridorlar ve merdivenler taranır. Erişilemeyen alanlar manuel kat planı veya ölçü olarak girilir.
+              Rooms, doors, corridors, and stairs are captured using iPhone LiDAR. Inaccessible zones are added manually via floorplan input.
             </p>
             <div>
-              <span class="step-feature-tag" data-i18n="step1_tag">Oda & Eşya Envanteri</span>
+              <span class="step-feature-tag" data-i18n="step1_tag">Room &amp; Item Inventory</span>
             </div>
           </div>
 
@@ -248,12 +260,12 @@
           <div class="pipeline-step">
             <span class="step-number">02</span>
             <div class="step-icon-wrap">🚪</div>
-            <h3 class="step-title" data-i18n="step2_title">2. Darboğaz & Fizik Analizi</h3>
+            <h3 class="step-title" data-i18n="step2_title">2. Bottleneck &amp; Motion Feasibility</h3>
             <p class="step-desc" data-i18n="step2_desc">
-              Klasik "Piyano Taşıyıcı Problemi" algoritmalarıyla kapı eşikleri, merdiven boşlukları, döndürme ve eğme açıları milimetrik hesaplanır.
+              Solving the classic 'Piano Mover's Problem' to calculate clearance, tilting, rotation angles, and narrow bottleneck navigation.
             </p>
             <div>
-              <span class="step-feature-tag" data-i18n="step2_tag">Geçiş Simülasyonu</span>
+              <span class="step-feature-tag" data-i18n="step2_tag">Motion Simulation</span>
             </div>
           </div>
 
@@ -261,12 +273,12 @@
           <div class="pipeline-step">
             <span class="step-number">03</span>
             <div class="step-icon-wrap">🚛</div>
-            <h3 class="step-title" data-i18n="step3_title">3. Akıllı Kamyon Yükleme</h3>
+            <h3 class="step-title" data-i18n="step3_title">3. Smart Truck Loading</h3>
             <p class="step-desc" data-i18n="step3_desc">
-              Eşyaların yerleştirilme sırasına göre kamyon hacmi modellenir; ters sırada yükleme planı, tahmini personel ve süre çıkarılır.
+              Cargo volume is organized in reverse unloading sequence, computing crew size, estimated hours, and disassembly needs.
             </p>
             <div>
-              <span class="step-feature-tag" data-i18n="step3_tag">Lojistik Optimizasyonu</span>
+              <span class="step-feature-tag" data-i18n="step3_tag">Logistics Optimization</span>
             </div>
           </div>
 
@@ -274,12 +286,12 @@
           <div class="pipeline-step">
             <span class="step-number">04</span>
             <div class="step-icon-wrap">🛋️</div>
-            <h3 class="step-title" data-i18n="step4_title">4. Doğrulanmış İç Mekân</h3>
+            <h3 class="step-title" data-i18n="step4_title">4. Verified Interior Design</h3>
             <p class="step-desc" data-i18n="step4_desc">
-              Yeni evin her odası için sirkülasyon alanı, priz ve tesisat kısıtlarına uyumlu, gerçek ölçülü yerleşim alternatifleri üretilir.
+              Rooms in destination home are arranged according to interior guidelines: clearances, conversation zones, and plumbing constraints.
             </p>
             <div>
-              <span class="step-feature-tag" data-i18n="step4_tag">Mimari Kurallara Uygun</span>
+              <span class="step-feature-tag" data-i18n="step4_tag">Guideline Compliant</span>
             </div>
           </div>
         </div>
@@ -290,10 +302,10 @@
     <section class="section" id="simulator">
       <div class="container">
         <div class="section-head">
-          <div class="badge badge-emerald" data-i18n="sim_badge">İnteraktif Demo</div>
-          <h2 class="section-title" data-i18n="sim_title">Darboğaz & Sığma Simülatörü</h2>
+          <div class="badge badge-scarlet" data-i18n="sim_badge">Interactive Demo</div>
+          <h2 class="section-title" data-i18n="sim_title">Passage &amp; Fit Simulator</h2>
           <p class="section-desc" data-i18n="sim_desc">
-            Aşağıdan bir mobilya seçin ve kapı/koridor genişliğini değiştirerek Movewise'ın geçiş fizibilitesini gerçek zamanlı test edin.
+            Select a furniture item and adjust doorway/corridor width to test Movewise's feasibility algorithms in real time.
           </p>
         </div>
 
@@ -303,31 +315,31 @@
             <div class="sim-controls">
               <div class="control-group">
                 <label class="control-label">
-                  <span data-i18n="sim_furn_label">Mobilya Seçimi</span>
+                  <span data-i18n="sim_furn_label">Select Furniture Item</span>
                 </label>
                 <div class="furniture-select-grid">
                   <button type="button" class="furn-btn active" data-key="sofa" id="btn-sofa">
                     <span>🛋️</span>
-                    <span class="furn-name">3 Kişilik L Koltuk</span>
+                    <span class="furn-name">3-Seater Sectional Sofa</span>
                   </button>
                   <button type="button" class="furn-btn" data-key="bed" id="btn-bed">
                     <span>🛏️</span>
-                    <span class="furn-name">Çift Kişilik Baza & Yatak</span>
+                    <span class="furn-name">King Size Bed &amp; Base</span>
                   </button>
                   <button type="button" class="furn-btn" data-key="wardrobe" id="btn-wardrobe">
                     <span>🚪</span>
-                    <span class="furn-name">Masif Gardırop</span>
+                    <span class="furn-name">Solid Wardrobe</span>
                   </button>
                   <button type="button" class="furn-btn" data-key="table" id="btn-table">
                     <span>🪑</span>
-                    <span class="furn-name">6 Kişilik Yemek Masası</span>
+                    <span class="furn-name">6-Person Dining Table</span>
                   </button>
                 </div>
               </div>
 
               <div class="control-group">
                 <div class="control-label">
-                  <span data-i18n="sim_door_label">Kapı / Koridor Net Genişliği</span>
+                  <span data-i18n="sim_door_label">Clear Doorway / Hallway Width</span>
                   <span class="control-val" id="door-width-val">85 cm</span>
                 </div>
                 <input type="range" class="slider-input" id="door-width-slider" min="65" max="130" value="85" step="1">
@@ -336,10 +348,10 @@
               <!-- Recommendation Note Box -->
               <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1rem;">
                 <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-cyan); font-weight: 700; margin-bottom: 0.35rem;">
-                  Movewise Planner Tavsiyesi:
+                  Movewise Planner Advice:
                 </div>
                 <p id="sim-advise-text" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
-                  Hesaplanıyor...
+                  Calculating...
                 </p>
               </div>
             </div>
@@ -353,7 +365,7 @@
 
               <!-- Result Status Banner -->
               <div class="sim-status-banner status-pass" id="sim-status-box">
-                <span id="sim-status-text">Sorunsuz Geçiş (Düz Geçer)</span>
+                <span id="sim-status-text">Feasible Pass (Straight Passage)</span>
                 <span id="sim-status-icon" style="font-size: 1.2rem;">✓</span>
               </div>
 
@@ -361,15 +373,15 @@
               <div class="sim-stats-grid">
                 <div class="sim-stat-box">
                   <div class="sim-stat-val" id="sim-clearance-val">+5 cm</div>
-                  <div class="sim-stat-label" data-i18n="sim_stat_clearance">Net Boşluk Payı</div>
+                  <div class="sim-stat-label" data-i18n="sim_stat_clearance">Safety Clearance</div>
                 </div>
                 <div class="sim-stat-box">
-                  <div class="sim-stat-val" id="sim-crew-val">2 Kişi</div>
-                  <div class="sim-stat-label" data-i18n="sim_stat_crew">Gerekli Ekip</div>
+                  <div class="sim-stat-val" id="sim-crew-val">2 Movers</div>
+                  <div class="sim-stat-label" data-i18n="sim_stat_crew">Crew Required</div>
                 </div>
                 <div class="sim-stat-box">
                   <div class="sim-stat-val" id="sim-weight-val">78 kg</div>
-                  <div class="sim-stat-label" data-i18n="sim_stat_weight">Eşya Ağırlığı</div>
+                  <div class="sim-stat-label" data-i18n="sim_stat_weight">Item Weight</div>
                 </div>
               </div>
             </div>
@@ -382,10 +394,10 @@
     <section class="section" id="comparison">
       <div class="container">
         <div class="section-head">
-          <div class="badge badge-primary" data-i18n="comp_badge">Farkımız</div>
-          <h2 class="section-title" data-i18n="comp_title">Mevcut Çözümlerle Karşılaştırma</h2>
+          <div class="badge badge-primary" data-i18n="comp_badge">Innovation</div>
+          <h2 class="section-title" data-i18n="comp_title">Comparison with Existing Solutions</h2>
           <p class="section-desc" data-i18n="comp_desc">
-            Movewise, piyasadaki tek boyutlu araçların aksine tüm taşıma zincirini birleştiren ilk platformdur.
+            Movewise is the first platform that brings scanning, interior design, and home-to-home move planning under one roof.
           </p>
         </div>
 
@@ -393,36 +405,36 @@
           <table class="comparison-table">
             <thead>
               <tr>
-                <th data-i18n="th_solution">Çözüm</th>
-                <th data-i18n="th_strength">Güçlü Yönü</th>
-                <th data-i18n="th_limitation">Kısıtı / Eksik Yönü</th>
-                <th class="table-highlight-head" data-i18n="th_movewise">Movewise Yaklaşımı</th>
+                <th data-i18n="th_solution">Solution</th>
+                <th data-i18n="th_strength">Strength</th>
+                <th data-i18n="th_limitation">Limitation</th>
+                <th class="table-highlight-head" data-i18n="th_movewise">Movewise Advantage</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><strong>Apple RoomPlan & magicplan</strong></td>
-                <td>LiDAR ile oda taraması ve kat planı çıkarma</td>
-                <td>Geçiş fizibilitesi veya hareket planlaması yok</td>
-                <td class="table-highlight"><span class="check-icon">✓</span> Taramayı doğrudan fiziksel hareket analiziyle eşleştirir</td>
+                <td>LiDAR room scanning and floor plan generation</td>
+                <td>No passage feasibility or motion planning</td>
+                <td class="table-highlight"><span class="check-icon">✓</span> Connects the scan directly to physical motion analysis</td>
               </tr>
               <tr>
                 <td><strong>IKEA Kreativ & Planner 5D</strong></td>
-                <td>Mobilya görselleştirme ve otomatik yerleşim</td>
-                <td>Eşyaların odaya ve kapılara nasıl ulaşacağı kontrol edilmez</td>
-                <td class="table-highlight"><span class="check-icon">✓</span> Kapı, koridor ve merdiven kısıtlarını yerleşimle denetler</td>
+                <td>Furniture visualization and automatic layout</td>
+                <td>Never checks how items will reach the room or pass through doors</td>
+                <td class="table-highlight"><span class="check-icon">✓</span> Validates layouts against door, corridor and staircase constraints</td>
               </tr>
               <tr>
                 <td><strong>Smart Moving & ItemFits</strong></td>
-                <td>Kapı ve asansör için tekil sığma ve döndürme hesabı</td>
-                <td>Boyutlar elle girilir; çoklu nesne ve güzergâh planlaması yoktur</td>
-                <td class="table-highlight"><span class="check-icon">✓</span> Tüm evin zincirleme darboğazlarını ve eşya sıralamasını çözer</td>
+                <td>Single-item fit and rotation checks for doors and elevators</td>
+                <td>Dimensions entered by hand; no multi-item or route planning</td>
+                <td class="table-highlight"><span class="check-icon">✓</span> Solves chained bottlenecks across the whole home, plus item ordering</td>
               </tr>
               <tr>
-                <td><strong>Yembo (Yapay Zekâ Video)</strong></td>
-                <td>Envanter ve hacim hesabı ile nakliyat teklifi</td>
-                <td>Güzergâh fizibilitesi, yerleşim veya taşıma sırası planı sunmaz</td>
-                <td class="table-highlight"><span class="check-icon">✓</span> Kamyon yükleme sırası (LIFO) ve montaj kısıtlarını hesaplar</td>
+                <td><strong>Yembo (AI Video)</strong></td>
+                <td>Moving quotes from inventory and volume estimates</td>
+                <td>No route feasibility, layout or moving-order plan</td>
+                <td class="table-highlight"><span class="check-icon">✓</span> Computes truck loading order (LIFO) and assembly constraints</td>
               </tr>
             </tbody>
           </table>
@@ -431,13 +443,13 @@
     </section>
 
     <!-- Target Audience / Value Props -->
-    <section class="section" id="target" style="background: rgba(255, 255, 255, 0.01);">
+    <section class="section" id="target" style="background: rgba(129, 151, 166, 0.025);">
       <div class="container">
         <div class="section-head">
-          <div class="badge badge-cyan" data-i18n="target_badge">Değer Önerisi</div>
-          <h2 class="section-title" data-i18n="target_title">Kimin İçin Tasarlandı?</h2>
+          <div class="badge badge-stone" data-i18n="target_badge">Value Proposition</div>
+          <h2 class="section-title" data-i18n="target_title">Built For Every Stakeholder</h2>
           <p class="section-desc" data-i18n="target_desc">
-            Movewise hem bireysel kullanıcıların hem de profesyonel sektörün kritik operasyonel maliyetlerini sıfırlar.
+            Movewise eliminates friction and costly surprises for both consumers and logistics professionals.
           </p>
         </div>
 
@@ -445,40 +457,40 @@
           <!-- Segment 1: Moving Companies -->
           <div class="target-card">
             <div class="target-icon">🚚</div>
-            <h3 class="target-title" data-i18n="t1_title">Nakliyat Firmaları</h3>
-            <div class="target-problem" data-i18n="t1_prob">Körlemesine verilen hatalı teklifler</div>
+            <h3 class="target-title" data-i18n="t1_title">Moving Companies</h3>
+            <div class="target-problem" data-i18n="t1_prob">Quotes given without seeing both homes</div>
             <p class="target-value" data-i18n="t1_val">
-              Her iki evin yapısına göre ekip sayısı, kamyon tipi, demontaj ihtiyacı ve yükleme sırasını önceden veren keşif raporu.
+              Pre-move survey with crew size, truck space, disassembly requirements, and optimized loading order.
             </p>
           </div>
 
           <!-- Segment 2: Individual Movers -->
           <div class="target-card">
             <div class="target-icon">🏡</div>
-            <h3 class="target-title" data-i18n="t2_title">Ev Taşıyan Bireyler</h3>
-            <div class="target-problem" data-i18n="t2_prob">Eşyaların yeni eve sığmama endişesi</div>
+            <h3 class="target-title" data-i18n="t2_title">Home Movers</h3>
+            <div class="target-problem" data-i18n="t2_prob">Anxiety over whether items will fit</div>
             <p class="target-value" data-i18n="t2_val">
-              Eski evden yeni eve mobilyaların akıbetini gösteren garantili ve stres önleyici dijital taşınma rehberi.
+              One transparent plan proving what fits and how to move each piece without surprises.
             </p>
           </div>
 
           <!-- Segment 3: Home Furnishers -->
           <div class="target-card">
             <div class="target-icon">🛋️</div>
-            <h3 class="target-title" data-i18n="t3_title">Evini Döşeyenler</h3>
-            <div class="target-problem" data-i18n="t3_prob">Ölçüleri göz ardı eden yerleşimler</div>
+            <h3 class="target-title" data-i18n="t3_title">Home Furnishers</h3>
+            <div class="target-problem" data-i18n="t3_prob">Layouts ignoring real spatial dimensions</div>
             <p class="target-value" data-i18n="t3_val">
-              Mevcut eşyalar ile katalog ürünlerini gerçek priz, kapı açılımı ve sirkülasyon kurallarıyla birleştiren rehber.
+              Guided design taking into account clearances, door swings, and wall sockets.
             </p>
           </div>
 
           <!-- Segment 4: Furniture Retailers -->
           <div class="target-card">
             <div class="target-icon">🏬</div>
-            <h3 class="target-title" data-i18n="t4_title">Mobilya Satıcıları</h3>
-            <div class="target-problem" data-i18n="t4_prob">Kapıdan dönen yüksek maliyetli teslimatlar</div>
+            <h3 class="target-title" data-i18n="t4_title">Furniture Retailers</h3>
+            <div class="target-problem" data-i18n="t4_prob">Expensive failed deliveries and returns</div>
             <p class="target-value" data-i18n="t4_val">
-              Müşterinin sepetindeki mobilyaların binaya ve kapılara sığacağını satın alma anında doğrulayan entegrasyon.
+              Pre-purchase path validation confirming the item can physically enter the customer's apartment.
             </p>
           </div>
         </div>
@@ -489,10 +501,10 @@
     <section class="section" id="team">
       <div class="container">
         <div class="section-head">
-          <div class="badge badge-primary" data-i18n="team_badge">Proje Ekibi</div>
-          <h2 class="section-title" data-i18n="team_title">Bilkent CS491 Geliştirici Ekibi</h2>
+          <div class="badge badge-primary" data-i18n="team_badge">Project Team</div>
+          <h2 class="section-title" data-i18n="team_title">Bilkent CS491 Development Team</h2>
           <p class="section-desc" data-i18n="team_desc">
-            Bilkent Üniversitesi Bilgisayar Mühendisliği Bölümü Öğrencileri tarafından geliştirilen bitirme projesi.
+            Senior Design Project developed by Computer Engineering students at Bilkent University.
           </p>
         </div>
 
@@ -541,13 +553,13 @@
         <!-- Academic Affiliation Banner -->
         <div class="academic-card">
           <div class="academic-info">
-            <h3 data-i18n="academic_title">Bilkent Üniversitesi Bilgisayar Mühendisliği</h3>
-            <p data-i18n="academic_desc">CS491 & CS492 Kıdemli Tasarım Projesi (Senior Design Project) • 2026-2027</p>
+            <h3 data-i18n="academic_title">Bilkent University Computer Engineering</h3>
+            <p data-i18n="academic_desc">CS491 &amp; CS492 Senior Design Project • Academic Year 2026-2027</p>
           </div>
           <div>
             <a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="academic-download-btn">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              <span data-i18n="btn_download_pdf">Öneri Raporunu İndir</span>
+              <span data-i18n="btn_download_pdf">Download Proposal PDF</span>
             </a>
           </div>
         </div>
@@ -555,13 +567,13 @@
     </section>
 
     <!-- Documents & Deliverables Section -->
-    <section class="section" id="documents" style="background: rgba(255, 255, 255, 0.01);">
+    <section class="section" id="documents" style="background: rgba(129, 151, 166, 0.025);">
       <div class="container">
         <div class="section-head">
-          <div class="badge badge-emerald" data-i18n="docs_badge">Proje Takvimi</div>
-          <h2 class="section-title" data-i18n="docs_title">Proje Dokümanları & Raporlar</h2>
+          <div class="badge badge-scarlet" data-i18n="docs_badge">Project Milestones</div>
+          <h2 class="section-title" data-i18n="docs_title">Project Deliverables &amp; Reports</h2>
           <p class="section-desc" data-i18n="docs_desc">
-            CS491/492 süresince hazırlanan ve güncellenen tüm resmi akademik teslimler.
+            All official academic deliverables produced during CS491/492.
           </p>
         </div>
 
@@ -570,15 +582,15 @@
           <div class="doc-card">
             <div class="doc-status ready">
               <span>●</span>
-              <span data-i18n="doc1_status">Tamamlandı & Erişilebilir</span>
+              <span data-i18n="doc1_status">Completed &amp; Available</span>
             </div>
-            <h3 class="doc-title" data-i18n="doc1_title">Proje Önerisi (Short Proposal)</h3>
+            <h3 class="doc-title" data-i18n="doc1_title">Short Project Proposal</h3>
             <p class="doc-desc" data-i18n="doc1_desc">
-              Problem tanımı, kısıtlar, sistem mimarisi, literatür karşılaştırması ve değerlendirme planını içeren ilk teklif metni.
+              Problem definition, constraints, system overview, related work comparison, and evaluation methodology.
             </p>
             <a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span data-i18n="doc1_btn">PDF Görüntüle / İndir</span>
+              <span data-i18n="doc1_btn">View / Download PDF</span>
             </a>
           </div>
 
@@ -586,14 +598,14 @@
           <div class="doc-card">
             <div class="doc-status upcoming">
               <span>○</span>
-              <span data-i18n="doc2_status">Hazırlık Aşamasında</span>
+              <span data-i18n="doc2_status">In Progress</span>
             </div>
-            <h3 class="doc-title" data-i18n="doc2_title">Gereksinim & Analiz Raporu</h3>
+            <h3 class="doc-title" data-i18n="doc2_title">Requirements &amp; Analysis Report</h3>
             <p class="doc-desc" data-i18n="doc2_desc">
-              Kullanıcı senaryoları, sistem kısıtları, fonksiyonel gereksinimler ve veri modeli analizleri.
+              User stories, system constraints, functional requirements, and preliminary data specifications.
             </p>
             <button class="btn btn-secondary btn-sm" disabled style="opacity: 0.6; cursor: not-allowed;">
-              <span data-i18n="doc2_btn">Çok Yakında</span>
+              <span data-i18n="doc2_btn">Coming Soon</span>
             </button>
           </div>
 
@@ -601,14 +613,14 @@
           <div class="doc-card">
             <div class="doc-status upcoming">
               <span>○</span>
-              <span data-i18n="doc3_status">Planlandı</span>
+              <span data-i18n="doc3_status">Scheduled</span>
             </div>
-            <h3 class="doc-title" data-i18n="doc3_title">Detaylı Mimari & Tasarım</h3>
+            <h3 class="doc-title" data-i18n="doc3_title">Detailed Design &amp; Architecture</h3>
             <p class="doc-desc" data-i18n="doc3_desc">
-              3D modelleme motoru, hareket planlayıcı algoritmaları ve mobil/web entegrasyon şeması.
+              3D spatial engine, motion planning algorithm specifications, and cloud API contracts.
             </p>
             <button class="btn btn-secondary btn-sm" disabled style="opacity: 0.6; cursor: not-allowed;">
-              <span data-i18n="doc3_btn">Çok Yakında</span>
+              <span data-i18n="doc3_btn">Coming Soon</span>
             </button>
           </div>
         </div>
@@ -631,18 +643,18 @@
         </div>
 
         <div class="footer-col">
-          <h4 data-i18n="footer_quick_links">Hızlı Bağlantılar</h4>
+          <h4 data-i18n="footer_quick_links">Quick Links</h4>
           <ul class="footer-links">
-            <li><a href="#about" data-i18n="nav_about">Hakkında</a></li>
-            <li><a href="#pipeline" data-i18n="nav_how">Nasıl Çalışır?</a></li>
-            <li><a href="#simulator" data-i18n="nav_simulator">Geçiş Simülatörü</a></li>
-            <li><a href="#comparison" data-i18n="nav_features">Farkımız</a></li>
-            <li><a href="#team" data-i18n="nav_team">Ekip</a></li>
+            <li><a href="#about" data-i18n="nav_about">About</a></li>
+            <li><a href="#pipeline" data-i18n="nav_how">How It Works</a></li>
+            <li><a href="#simulator" data-i18n="nav_simulator">Fit Simulator</a></li>
+            <li><a href="#comparison" data-i18n="nav_features">Features</a></li>
+            <li><a href="#team" data-i18n="nav_team">Team &amp; CS491</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4 data-i18n="footer_academic">Akademik Bağlantılar</h4>
+          <h4 data-i18n="footer_academic">Academic Links</h4>
           <ul class="footer-links">
             <li><a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer">Proposal PDF</a></li>
             <li><a href="https://www.cs.bilkent.edu.tr" target="_blank" rel="noopener noreferrer">Bilkent CS</a></li>
@@ -653,7 +665,7 @@
 
       <div class="footer-bottom">
         <div>
-          © 2026 Movewise Team • Bilkent University CS491 Senior Design Project. <span data-i18n="footer_rights">Tüm hakları saklıdır.</span>
+          © 2026 Movewise Team • Bilkent University CS491 Senior Design Project. <span data-i18n="footer_rights">All rights reserved.</span>
         </div>
         <div>
           Designed for GitHub Pages
@@ -663,6 +675,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=2"></script>
+  <script src="assets/js/motion.js?v=2"></script>
 </body>
 </html>

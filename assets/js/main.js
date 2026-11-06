@@ -17,7 +17,8 @@ const FURNITURE_DATA = {
     tiltPossible: true,
     minStraightPass: 95,
     minTiltedPass: 80,
-    disassemblyPart: "Ayaklar / Kolçaklar"
+    disassemblyPart: "Ayaklar / Kolçaklar",
+    disassemblyPart_en: "Legs / Armrests"
   },
   bed: {
     name_tr: "Çift Kişilik Baza & Yatak",
@@ -30,7 +31,8 @@ const FURNITURE_DATA = {
     tiltPossible: true,
     minStraightPass: 160,
     minTiltedPass: 85,
-    disassemblyPart: "Baza Başlığı"
+    disassemblyPart: "Baza Başlığı",
+    disassemblyPart_en: "Headboard"
   },
   wardrobe: {
     name_tr: "Masif Gardırop",
@@ -43,7 +45,8 @@ const FURNITURE_DATA = {
     tiltPossible: false,
     minStraightPass: 75,
     minTiltedPass: 70,
-    disassemblyPart: "Kapaklar & Raflar"
+    disassemblyPart: "Kapaklar & Raflar",
+    disassemblyPart_en: "Doors & Shelves"
   },
   table: {
     name_tr: "6 Kişilik Yemek Masası",
@@ -56,7 +59,8 @@ const FURNITURE_DATA = {
     tiltPossible: true,
     minStraightPass: 90,
     minTiltedPass: 78,
-    disassemblyPart: "Masa Ayakları"
+    disassemblyPart: "Masa Ayakları",
+    disassemblyPart_en: "Table Legs"
   }
 };
 
@@ -328,7 +332,8 @@ const TRANSLATIONS = {
   }
 };
 
-let currentLang = 'tr';
+// English-only for now. The Turkish dictionary above is kept dormant so it can be re-enabled later.
+let currentLang = 'en';
 let selectedFurnitureKey = 'sofa';
 let currentDoorWidth = 85;
 
@@ -342,10 +347,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Setup Language
 function initLanguage() {
-  const savedLang = localStorage.getItem('movewise_lang');
-  if (savedLang && (savedLang === 'tr' || savedLang === 'en')) {
-    currentLang = savedLang;
-  }
   updateLanguageUI();
 
   const trBtn = document.getElementById('lang-tr-btn');
@@ -362,9 +363,13 @@ function setLanguage(lang) {
   localStorage.setItem('movewise_lang', lang);
   updateLanguageUI();
   updateSimulatorResults();
+  // re-split and replay the hero headline in the new language
+  if (window.MovewiseMotion) window.MovewiseMotion.refreshText();
 }
 
 function updateLanguageUI() {
+  // keeps CSS uppercase correct (Turkish dotted İ only for Turkish text)
+  document.documentElement.lang = currentLang;
   const trBtn = document.getElementById('lang-tr-btn');
   const enBtn = document.getElementById('lang-en-btn');
 
@@ -465,11 +470,20 @@ function updateSimulatorResults() {
     statusIcon.textContent = '✕';
     advice = currentLang === 'tr' 
       ? `Darboğaz tespit edildi! Geçiş için [${furn.disassemblyPart}] demonte edilmeli veya pencere/asansör alternatifi değerlendirilmelidir.` 
-      : `Bottleneck detected! Disassembly of [${furn.disassemblyPart}] required or alternative entrance must be evaluated.`;
+      : `Bottleneck detected! Disassembly of [${furn.disassemblyPart_en}] required or alternative entrance must be evaluated.`;
   }
 
   if (statusBox) {
-    statusBox.className = `sim-status-banner ${statusClass}`;
+    const nextClass = `sim-status-banner ${statusClass}`;
+    if (statusBox.className !== nextClass) {
+      statusBox.className = nextClass;
+      if (statusBox.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        statusBox.animate(
+          [{ transform: 'scale(0.96)', opacity: 0.6 }, { transform: 'scale(1)', opacity: 1 }],
+          { duration: 450, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+        );
+      }
+    }
   }
   if (statusText) statusText.textContent = statusMsg;
   if (clearanceVal) {
@@ -482,48 +496,111 @@ function updateSimulatorResults() {
   renderSimVisual(furn, currentDoorWidth, clearance >= 0);
 }
 
+// Simulator visual: the SVG is built once, then geometry is tweened toward
+// its target each frame so slider changes glide instead of jumping.
+const simVisual = { built: false, cur: null, target: null, raf: 0, state: '' };
+
+function buildSimSvg(canvasBox) {
+  canvasBox.innerHTML = `
+    <svg width="100%" height="100%" viewBox="0 0 400 200" style="overflow: visible;" aria-hidden="true">
+      <!-- Walls (extend past the viewBox edges) -->
+      <rect id="sim-wall-l" x="-300" y="20" height="30" fill="#0E1A33" stroke="#2B3D5C" stroke-width="2"/>
+      <rect id="sim-wall-r" y="20" height="30" fill="#0E1A33" stroke="#2B3D5C" stroke-width="2"/>
+      <line id="sim-jamb-l" y1="10" y2="60" stroke="#8197A6" stroke-width="3" stroke-linecap="round"/>
+      <line id="sim-jamb-r" y1="10" y2="60" stroke="#8197A6" stroke-width="3" stroke-linecap="round"/>
+
+      <!-- Dimension line -->
+      <line id="sim-dim" class="sim-dim-line" y1="35" y2="35" stroke="#B9C8D3" stroke-dasharray="3 3"/>
+      <text id="sim-dim-text" x="200" y="31" fill="#B9C8D3" font-size="11" font-family="JetBrains Mono, monospace" text-anchor="middle"></text>
+
+      <!-- Planned path -->
+      <path d="M 200 40 L 200 200" stroke="rgba(77, 120, 240, 0.45)" stroke-width="2" stroke-dasharray="4 4" class="sim-dim-line"/>
+
+      <!-- Furniture item -->
+      <g transform="translate(200, 115)">
+        <g id="sim-move" class="sim-move">
+          <g id="sim-rot" class="sim-rot">
+            <rect id="sim-furn" rx="6" fill-opacity="0.25" stroke-width="2"/>
+            <text id="sim-furn-label" x="0" y="4" fill="#ffffff" font-size="10" font-weight="bold" font-family="Plus Jakarta Sans, sans-serif" text-anchor="middle"></text>
+            <circle cx="0" cy="0" r="3" fill="#ffffff"/>
+          </g>
+        </g>
+      </g>
+    </svg>`;
+  simVisual.built = true;
+}
+
+function applySimGeometry(g) {
+  const left = (400 - g.door) / 2;
+  const right = (400 + g.door) / 2;
+  const set = (id, attrs) => {
+    const el = document.getElementById(id);
+    if (el) Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+  };
+  set('sim-wall-l', { width: left + 300 });
+  set('sim-wall-r', { x: right, width: 400 - right + 300 });
+  set('sim-jamb-l', { x1: left, x2: left });
+  set('sim-jamb-r', { x1: right, x2: right });
+  set('sim-dim', { x1: left + 5, x2: right - 5 });
+  set('sim-furn', { x: -g.w / 2, y: -g.l / 2, width: g.w, height: g.l });
+}
+
+function tweenSim() {
+  const c = simVisual.cur, t = simVisual.target;
+  let done = true;
+  ['door', 'w', 'l'].forEach((k) => {
+    c[k] += (t[k] - c[k]) * 0.2;
+    if (Math.abs(t[k] - c[k]) > 0.3) done = false; else c[k] = t[k];
+  });
+  applySimGeometry(c);
+  simVisual.raf = done ? 0 : requestAnimationFrame(tweenSim);
+}
+
 function renderSimVisual(furn, doorWidth, isPassable) {
   const canvasBox = document.getElementById('sim-canvas-box');
   if (!canvasBox) return;
+  if (!simVisual.built) buildSimSvg(canvasBox);
 
   // Visual scale
   const scale = 1.3;
   const doorPixelWidth = Math.max(100, Math.min(220, doorWidth * scale));
-  const furnW = Math.max(60, Math.min(180, (currentDoorWidth >= furn.minStraightPass ? furn.width : (furn.minTiltedPass || furn.width)) * scale * 0.85));
+  const isTilted = isPassable && doorWidth < furn.minStraightPass && doorWidth >= furn.minTiltedPass;
+  let furnW = Math.max(60, Math.min(180, (doorWidth >= furn.minStraightPass ? furn.width : (furn.minTiltedPass || furn.width)) * scale * 0.85));
   const furnL = Math.max(80, Math.min(160, furn.height * scale));
 
-  const isTilted = currentDoorWidth < furn.minStraightPass && currentDoorWidth >= furn.minTiltedPass;
-  const rotationAngle = isTilted ? -22 : 0;
-  const furnColor = isPassable ? (isTilted ? '#f59e0b' : '#38bdf8') : '#f43f5e';
+  // keep the drawing honest: passing items fit the gap, blocked items visibly collide
+  if (isPassable) furnW = Math.min(furnW, doorPixelWidth - 10);
+  else furnW = Math.min(240, Math.max(furnW, doorPixelWidth + 18));
 
-  canvasBox.innerHTML = `
-    <svg width="100%" height="100%" viewBox="0 0 400 200" style="overflow: visible;">
-      <!-- Wall Left -->
-      <rect x="0" y="20" width="${(400 - doorPixelWidth) / 2}" height="30" fill="#1e293b" stroke="#334155" stroke-width="2"/>
-      <line x1="${(400 - doorPixelWidth) / 2}" y1="10" x2="${(400 - doorPixelWidth) / 2}" y2="60" stroke="#64748b" stroke-width="3"/>
-      
-      <!-- Wall Right -->
-      <rect x="${(400 + doorPixelWidth) / 2}" y="20" width="${(400 - doorPixelWidth) / 2}" height="30" fill="#1e293b" stroke="#334155" stroke-width="2"/>
-      <line x1="${(400 + doorPixelWidth) / 2}" y1="10" x2="${(400 + doorPixelWidth) / 2}" y2="60" stroke="#64748b" stroke-width="3"/>
-      
-      <!-- Dimension Arrow -->
-      <line x1="${(400 - doorPixelWidth) / 2 + 5}" y1="35" x2="${(400 + doorPixelWidth) / 2 - 5}" y2="35" stroke="#38bdf8" stroke-dasharray="3 3"/>
-      <text x="200" y="32" fill="#38bdf8" font-size="11" font-family="monospace" text-anchor="middle">${doorWidth} cm</text>
+  const state = !isPassable ? 'fail' : (isTilted ? 'warn' : 'pass');
+  const furnColor = state === 'fail' ? '#FF2400' : state === 'warn' ? '#F2A93B' : '#4D78F0';
 
-      <!-- Pathway Grid Lines -->
-      <path d="M 200 40 L 200 180" stroke="rgba(99, 102, 241, 0.4)" stroke-width="2" stroke-dasharray="4 4"/>
-      
-      <!-- Furniture Item Sliding Through -->
-      <g transform="translate(200, 115) rotate(${rotationAngle})">
-        <rect x="${-furnW / 2}" y="${-furnL / 2}" width="${furnW}" height="${furnL}" rx="6"
-              fill="${furnColor}" fill-opacity="0.25" stroke="${furnColor}" stroke-width="2" />
-        <text x="0" y="4" fill="#ffffff" font-size="10" font-weight="bold" font-family="sans-serif" text-anchor="middle">
-          ${currentLang === 'tr' ? furn.name_tr : furn.name_en}
-        </text>
-        <circle cx="0" cy="0" r="3" fill="#ffffff" />
-      </g>
-    </svg>
-  `;
+  simVisual.target = { door: doorPixelWidth, w: furnW, l: furnL };
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!simVisual.cur || reduce) {
+    simVisual.cur = { ...simVisual.target };
+    applySimGeometry(simVisual.cur);
+  } else if (!simVisual.raf) {
+    simVisual.raf = requestAnimationFrame(tweenSim);
+  }
+
+  const furnRect = document.getElementById('sim-furn');
+  furnRect.style.fill = furnColor;
+  furnRect.style.stroke = furnColor;
+  document.getElementById('sim-rot').style.transform = `rotate(${isTilted ? -22 : 0}deg)`;
+  document.getElementById('sim-dim-text').textContent = `${doorWidth} cm`;
+  document.getElementById('sim-furn-label').textContent = currentLang === 'tr' ? furn.name_tr : furn.name_en;
+
+  // the item stops with its leading edge against the wall when blocked
+  const move = document.getElementById('sim-move');
+  move.style.setProperty('--stop', `${50 + furnL / 2 - 115 + 3}px`);
+  const animState = state === 'fail' ? 'is-fail' : 'is-pass';
+  if (simVisual.state !== animState) {
+    move.classList.remove('is-pass', 'is-fail');
+    void move.getBoundingClientRect();
+    move.classList.add(animState);
+    simVisual.state = animState;
+  }
 }
 
 // Scroll Effects (Navbar shadow & blur)
