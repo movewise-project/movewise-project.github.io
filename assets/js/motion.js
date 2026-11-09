@@ -111,19 +111,22 @@
   /* ---------------- Nav: scroll-spy + progress bar ---------------- */
   function initNav() {
     const bar = document.getElementById('scroll-progress');
-    const links = [...document.querySelectorAll('.nav-link')];
+    // only in-page anchors take part in scroll-spy (the menu also holds the PDF link)
+    const links = [...document.querySelectorAll('.nav-link[href^="#"]')];
     const sections = links
       .map((a) => document.querySelector(a.getAttribute('href')))
       .filter(Boolean);
 
     if ('IntersectionObserver' in window) {
+      // watch every section, so one without a nav entry clears the highlight
+      // instead of leaving the previous link lit
       const spy = new IntersectionObserver((entries) => {
         entries.forEach((e) => {
           if (!e.isIntersecting) return;
           links.forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === `#${e.target.id}`));
         });
       }, { rootMargin: '-45% 0px -50% 0px' });
-      sections.forEach((s) => spy.observe(s));
+      document.querySelectorAll('main section[id]').forEach((s) => spy.observe(s));
     }
 
     let ticking = false;
@@ -158,7 +161,7 @@
   function initSpotlight() {
     if (!finePointer) return;
     const cards = document.querySelectorAll(
-      '.metric-card, .pipeline-step, .target-card, .team-card, .doc-card, .contrast-card, .sim-stat-box'
+      '.pipeline-step, .team-card, .doc-card, .contrast-card'
     );
     cards.forEach((card) => {
       card.classList.add('spotlight');
@@ -222,12 +225,11 @@
     const ctx = canvas.getContext('2d');
 
     const COL = {
-      egy: cssRgb('--egyptian'),
-      egyB: cssRgb('--egyptian-bright'),
-      stone: cssRgb('--stone'),
-      stoneL: cssRgb('--stone-light'),
-      stoneD: cssRgb('--stone-dark'),
-      scarlet: cssRgb('--scarlet'),
+      ink: cssRgb('--ink'),
+      ink2: cssRgb('--ink-2'),
+      rule: cssRgb('--rule-strong'),
+      sheet: cssRgb('--sheet'),
+      accent: cssRgb('--accent'),
     };
 
     const W_BODY = 8;                 // body width (px)
@@ -288,12 +290,12 @@
       ctx.rotate(ang);
 
       // soft ground shadow
-      ctx.fillStyle = 'rgba(0,0,0,0.35)';
+      ctx.fillStyle = `rgba(${COL.ink},0.14)`;
       roundRect(-L / 2 + 1, -hw + 1.8, L, W_BODY, 2);
       ctx.fill();
 
       // wheels peeking out at the sides
-      ctx.fillStyle = 'rgba(10,14,24,0.95)';
+      ctx.fillStyle = `rgba(${COL.ink},0.9)`;
       const axles = u.cab ? [L / 2 - 3, -L / 2 + 3] : [-L / 2 + 2.5, -L / 2 + 5.5];
       axles.forEach((ax) => {
         ctx.fillRect(ax - 1.5, -hw - 0.9, 3, 1.4);
@@ -302,13 +304,11 @@
 
       if (u.cab) {
         const g = ctx.createLinearGradient(0, -hw, 0, hw);
-        g.addColorStop(0, `rgb(${COL.egyB})`);
-        g.addColorStop(1, `rgb(${COL.egy})`);
-        ctx.fillStyle = g;
+        ctx.fillStyle = `rgb(${COL.ink})`;
         roundRect(-L / 2, -hw, L, W_BODY, 2.5);
         ctx.fill();
         // windshield
-        ctx.fillStyle = `rgba(${COL.stoneL},0.9)`;
+        ctx.fillStyle = `rgba(${COL.sheet},0.85)`;
         roundRect(L / 2 - 4, -hw + 1.2, 2.2, W_BODY - 2.4, 1);
         ctx.fill();
         // headlights
@@ -317,23 +317,24 @@
         ctx.fillRect(L / 2 - 0.8, hw - 2.2, 1, 1.6);
       } else {
         const g = ctx.createLinearGradient(0, -hw, 0, hw);
-        g.addColorStop(0, `rgb(${COL.stoneL})`);
-        g.addColorStop(1, `rgb(${COL.stone})`);
-        ctx.fillStyle = g;
+        ctx.fillStyle = `rgb(${COL.sheet})`;
         roundRect(-L / 2, -hw, L, W_BODY, 1.5);
         ctx.fill();
+        ctx.strokeStyle = `rgb(${COL.ink})`;
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
         // container ribs
-        ctx.strokeStyle = `rgba(${COL.stoneD},0.45)`;
+        ctx.strokeStyle = `rgba(${COL.rule},0.9)`;
         ctx.lineWidth = 0.6;
         ctx.beginPath();
         for (let x = -L / 2 + 3; x < L / 2 - 1; x += 3) { ctx.moveTo(x, -hw + 0.8); ctx.lineTo(x, hw - 0.8); }
         ctx.stroke();
-        // scarlet brand stripe along the roof
-        ctx.fillStyle = `rgb(${COL.scarlet})`;
+        // orange stripe along the roof
+        ctx.fillStyle = `rgb(${COL.accent})`;
         ctx.fillRect(-L / 2 + 1, -0.6, L - 2, 1.2);
         // tail lights on the last trailer
         if (isLast) {
-          ctx.fillStyle = `rgba(${COL.scarlet},0.95)`;
+          ctx.fillStyle = `rgba(${COL.accent},0.95)`;
           ctx.fillRect(-L / 2, -hw + 0.6, 0.9, 1.5);
           ctx.fillRect(-L / 2, hw - 2.1, 0.9, 1.5);
         }
@@ -380,8 +381,8 @@
         ctx.translate(cab.f.x, cab.f.y);
         ctx.rotate(Math.atan2(cab.f.y - cab.r.y, cab.f.x - cab.r.x));
         const g = ctx.createLinearGradient(0, 0, 26, 0);
-        g.addColorStop(0, `rgba(255,236,190,${0.4 * lights})`);
-        g.addColorStop(1, 'rgba(255,236,190,0)');
+        g.addColorStop(0, `rgba(${COL.accent},${0.3 * lights})`);
+        g.addColorStop(1, `rgba(${COL.accent},0)`);
         ctx.fillStyle = g;
         ctx.beginPath();
         ctx.moveTo(0, -3.5);
@@ -394,7 +395,7 @@
       }
 
       // couplings
-      ctx.strokeStyle = `rgba(${COL.stoneD},0.95)`;
+      ctx.strokeStyle = `rgba(${COL.ink2},0.95)`;
       ctx.lineWidth = 1.6;
       ctx.lineCap = 'round';
       ctx.beginPath();
@@ -418,11 +419,10 @@
     const ctx = canvas.getContext('2d');
 
     const COL = {
-      egy: cssRgb('--egyptian'),
-      egyB: cssRgb('--egyptian-bright'),
-      stone: cssRgb('--stone'),
-      stoneL: cssRgb('--stone-light'),
-      scarlet: cssRgb('--scarlet'),
+      ink: cssRgb('--ink'),
+      ink3: cssRgb('--ink-3'),
+      accent: cssRgb('--accent'),
+      verified: cssRgb('--verified'),
     };
 
     // Floor plan in normalized coordinates (x, y in 0..1); gaps are doorways.
@@ -507,7 +507,7 @@
       boxL = clamp(bw * 0.045, 26, 58);
       boxW = boxL * 0.45;
 
-      const count = Math.round(clamp((W * H) / 11000, 30, 140));
+      const count = 0;
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * W,
         y: Math.random() * H,
@@ -586,7 +586,7 @@
         }
         const a = (0.08 + p.z * 0.3) * (0.65 + 0.35 * Math.sin(t * 1.2 + p.tw));
         ctx.beginPath();
-        ctx.fillStyle = `rgba(${p.z > 0.85 ? COL.egyB : COL.stoneL},${a})`;
+        ctx.fillStyle = `rgba(${COL.ink3},${a})`;
         ctx.arc(p.x + px * p.z * 1.6, p.y + py * p.z * 1.6, 0.4 + p.z * 1.5, 0, Math.PI * 2);
         ctx.fill();
       }
@@ -596,8 +596,8 @@
 
       // walls
       ctx.lineCap = 'round';
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = `rgba(${COL.stone},0.2)`;
+      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = `rgba(${COL.ink},0.82)`;
       ctx.beginPath();
       for (const w of walls) { ctx.moveTo(w.a.x, w.a.y); ctx.lineTo(w.b.x, w.b.y); }
       ctx.stroke();
@@ -607,7 +607,7 @@
       for (const d of doors) {
         const r = Math.hypot(d.b.x - d.a.x, d.b.y - d.a.y);
         const base = Math.atan2(d.b.y - d.a.y, d.b.x - d.a.x);
-        ctx.strokeStyle = `rgba(${COL.stone},${0.16 + d.glow * 0.4})`;
+        ctx.strokeStyle = `rgba(${COL.ink3},${0.55 + d.glow * 0.4})`;
         ctx.setLineDash([3, 4]);
         ctx.beginPath();
         ctx.arc(d.a.x, d.a.y, r, base - Math.PI / 2, base);
@@ -620,14 +620,7 @@
 
         // clearance check glow while the item passes through
         if (d.glow > 0.02) {
-          const g = ctx.createRadialGradient(d.c.x, d.c.y, 0, d.c.x, d.c.y, r * 1.4);
-          g.addColorStop(0, `rgba(${COL.egyB},${0.35 * d.glow})`);
-          g.addColorStop(1, `rgba(${COL.egyB},0)`);
-          ctx.fillStyle = g;
-          ctx.beginPath();
-          ctx.arc(d.c.x, d.c.y, r * 1.4, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.strokeStyle = `rgba(${COL.egyB},${0.9 * d.glow})`;
+          ctx.strokeStyle = `rgba(${COL.verified},${0.95 * d.glow})`;
           ctx.lineWidth = 2;
           ctx.beginPath();
           ctx.moveTo(d.a.x, d.a.y);
@@ -645,8 +638,8 @@
         const hit = raycast(beam - i * FAN_STEP);
         const a = (1 - i / FAN) * 0.3;
         const g = ctx.createLinearGradient(scanner.x, scanner.y, hit.x, hit.y);
-        g.addColorStop(0, `rgba(${COL.egyB},${a})`);
-        g.addColorStop(1, `rgba(${COL.egyB},${a * 0.15})`);
+        g.addColorStop(0, `rgba(${COL.accent},${a})`);
+        g.addColorStop(1, `rgba(${COL.accent},${a * 0.15})`);
         ctx.strokeStyle = g;
         ctx.lineWidth = i === 0 ? 1.4 : 1;
         ctx.beginPath();
@@ -666,18 +659,18 @@
         if (!reduceMotion) c.life -= dt / 7;
         if (c.life <= 0) { cloud.splice(i, 1); continue; }
         const fresh = c.life > 0.93;
-        ctx.fillStyle = fresh ? `rgba(${COL.scarlet},${c.life})` : `rgba(${COL.stoneL},${c.life * 0.55})`;
+        ctx.fillStyle = fresh ? `rgba(${COL.accent},${c.life})` : `rgba(${COL.ink3},${c.life * 0.6})`;
         ctx.fillRect(c.x - 0.9, c.y - 0.9, fresh ? 2.4 : 1.8, fresh ? 2.4 : 1.8);
       }
 
       // scanner head
       const pulse = (t * 0.8) % 1;
-      ctx.strokeStyle = `rgba(${COL.scarlet},${0.6 * (1 - pulse)})`;
+      ctx.strokeStyle = `rgba(${COL.accent},${0.6 * (1 - pulse)})`;
       ctx.lineWidth = 1.2;
       ctx.beginPath();
       ctx.arc(scanner.x, scanner.y, 4 + pulse * 22, 0, Math.PI * 2);
       ctx.stroke();
-      ctx.fillStyle = `rgba(${COL.scarlet},0.95)`;
+      ctx.fillStyle = `rgba(${COL.accent},0.95)`;
       ctx.beginPath();
       ctx.arc(scanner.x, scanner.y, 3.5, 0, Math.PI * 2);
       ctx.fill();
@@ -697,14 +690,14 @@
       // planned path ahead (faint) and travelled trail (dashed)
       ctx.lineWidth = 1.2;
       ctx.setLineDash([2, 7]);
-      ctx.strokeStyle = `rgba(${COL.stoneL},${0.18 * fade})`;
+      ctx.strokeStyle = `rgba(${COL.ink3},${0.45 * fade})`;
       ctx.beginPath();
       route.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)));
       ctx.stroke();
 
       ctx.setLineDash([6, 6]);
       ctx.lineDashOffset = reduceMotion ? 0 : -t * 20;
-      ctx.strokeStyle = `rgba(${COL.egyB},${0.65 * fade})`;
+      ctx.strokeStyle = `rgba(${COL.accent},${0.9 * fade})`;
       ctx.lineWidth = 1.6;
       ctx.beginPath();
       for (let i = 0; i < route.length && route[i].d <= dist; i++) {
@@ -721,7 +714,7 @@
       for (let d = GAP * 0.5; d < dist - boxL; d += GAP) {
         const g = poseAt(d);
         const age = (dist - d) / routeLen;
-        drawBox(g.x, g.y, g.ang, `rgba(${COL.stone},${(0.28 - age * 0.18) * fade})`, null, 1);
+        drawBox(g.x, g.y, g.ang, `rgba(${COL.ink3},${(0.4 - age * 0.25) * fade})`, null, 1);
       }
 
       // doors light up as the item clears them
@@ -732,22 +725,14 @@
       }
 
       // the item itself
-      const glowR = boxL * (parked ? 1.6 : 1.1);
-      const halo = ctx.createRadialGradient(head.x, head.y, 0, head.x, head.y, glowR);
-      halo.addColorStop(0, `rgba(${parked ? COL.scarlet : COL.egyB},${0.3 * fade})`);
-      halo.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = halo;
-      ctx.beginPath();
-      ctx.arc(head.x, head.y, glowR, 0, Math.PI * 2);
-      ctx.fill();
       drawBox(head.x, head.y, head.ang,
-        `rgba(${parked ? COL.scarlet : COL.egyB},${0.95 * fade})`,
-        `rgba(${COL.egy},${0.45 * fade})`, 1.6);
+        `rgba(${parked ? COL.verified : COL.ink},${0.95 * fade})`,
+        `rgba(${parked ? COL.verified : COL.accent},${0.22 * fade})`, 1.6);
 
       // verified tick once placed in the new room
       if (parked && fade > 0) {
         const k = clamp((local - travel) / 0.6, 0, 1);
-        ctx.strokeStyle = `rgba(${COL.scarlet},${fade})`;
+        ctx.strokeStyle = `rgba(${COL.verified},${fade})`;
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.arc(head.x, head.y, boxL * (0.9 + k * 0.25), -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * easeInOut(k));
@@ -803,7 +788,6 @@
     initReveal();
     initNav();
     initSpotlight();
-    initTilt();
     initMagnetic();
     initCursor();
     initHeroCanvas();

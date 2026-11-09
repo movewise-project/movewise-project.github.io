@@ -1,2 +1,14 @@
 .DS_Store
 Thumbs.db
+
+# Local AI tooling (installed per machine, includes Windows binaries/hooks)
+.claude/
+.agent/
+.gemini/
+
+# Impeccable: machine-local settings (shared config stays tracked)
+.impeccable/config.local.json
+
+# Editor settings
+.vscode/
+.impeccable/hook.cache.json

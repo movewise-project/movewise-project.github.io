@@ -6,7 +6,7 @@
   <title>Movewise | Home-to-Home Moving and Verified Interior Design</title>
   
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Movewise: step-by-step verified moving and interior design for every item, from the old home to the new one, using LiDAR scanning, physics-based passage analysis and smart truck loading order. Bilkent University CS491 Senior Design Project.">
+  <meta name="description" content="Movewise plans a home-to-home move and the new home's layout as one verified route for every item. LiDAR scanning works today as a prototype; passage checks and truck loading order are planned. Bilkent University CS491 Senior Design Project.">
   <meta name="keywords" content="Movewise, Bilkent CS491, LiDAR room scanning, motion planning, interior design, piano movers problem, smart moving, truck loading">
   <meta name="author" content="Movewise Team - Bilkent University">
   
@@ -14,18 +14,17 @@
   <meta property="og:title" content="Movewise | Home-to-Home Moving and Verified Interior Design">
   <meta property="og:description" content="A Step-by-Step Journey for Every Item. Bilkent University CS491 Senior Design Project.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/images/hero-concept.jpg">
   
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg?v=6">
 
-  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <!-- Google Fonts: Archivo, IBM Plex Sans, IBM Plex Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=2">
+  <link rel="stylesheet" href="assets/css/style.css?v=20">
 
   <!-- Flag JS early so intro/reveal states apply before first paint; safety net if scripts fail -->
   <script>
@@ -34,138 +33,91 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- Scroll progress -->
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
   <!-- Ambient Animated Background -->
   <div class="ambient-bg" aria-hidden="true">
-    <div class="ambient-orb orb-1"></div>
-    <div class="ambient-orb orb-2"></div>
-    <div class="ambient-orb orb-3"></div>
     <div class="grid-overlay"></div>
   </div>
 
   <!-- Header & Navigation -->
   <header class="site-header" id="site-header">
     <div class="container navbar">
-      <a href="#hero" class="brand" id="brand-logo" aria-label="Movewise Home">
-        <img src="assets/images/logo.svg" alt="Movewise Logo" class="brand-icon">
+      <a href="#hero" class="brand" id="brand-logo" aria-label="Movewise, back to top">
+        <img src="assets/images/logo.svg?v=6" alt="" class="brand-icon">
         <span>Movewise</span>
         <span class="brand-tag">CS491</span>
       </a>
 
-      <nav>
+      <nav aria-label="Main">
         <ul class="nav-links" id="main-nav-links">
-          <li><a href="#about" class="nav-link" data-i18n="nav_about">About</a></li>
           <li><a href="#pipeline" class="nav-link" data-i18n="nav_how">How It Works</a></li>
           <li><a href="#simulator" class="nav-link" data-i18n="nav_simulator">Fit Simulator</a></li>
-          <li><a href="#comparison" class="nav-link" data-i18n="nav_features">Features</a></li>
-          <li><a href="#target" class="nav-link" data-i18n="nav_target">Users</a></li>
+          <li><a href="#comparison" class="nav-link" data-i18n="nav_features">Comparison</a></li>
           <li><a href="#team" class="nav-link" data-i18n="nav_team">Team &amp; CS491</a></li>
           <li><a href="#documents" class="nav-link" data-i18n="nav_docs">Documents</a></li>
+          <li class="nav-pdf"><a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer" class="nav-link"><span data-i18n="btn_proposal">Proposal (PDF)</span><span class="sr-only"> (opens in a new tab)</span></a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
         <!-- Proposal PDF Direct CTA -->
-        <a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="nav-proposal-btn" aria-label="Proposal PDF" title="Proposal PDF">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-          <span data-i18n="btn_proposal">Project Proposal (PDF)</span>
-        </a>
+        <a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="nav-proposal-btn" aria-label="Proposal (PDF), opens in a new tab" title="Proposal (PDF)">
+          <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          <span data-i18n="btn_proposal">Proposal (PDF)</span>
+        <span class="sr-only"> (opens in a new tab)</span></a>
 
         <!-- Mobile Toggle Button -->
-        <button class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Toggle menu">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <button type="button" class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav-links">
+          <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
       </div>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <!-- Hero Section -->
     <section class="hero-section" id="hero">
-      <!-- Blueprint canvas: LiDAR sweep + furniture route -->
-      <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
       <div class="container">
         <div class="hero-content">
           <div class="badge badge-primary intro" style="--d: 0s;">
-            <span class="pulse-dot" aria-hidden="true"></span>
-            <span data-i18n="hero_badge">Bilkent University • CS491 Senior Design Project</span>
+            <span data-i18n="hero_badge">Bilkent CS491 Senior Design Project</span>
           </div>
           <h1 class="hero-title" data-i18n="hero_title" data-split>
             Home-to-Home Moving &amp; Verified Interior Design
           </h1>
           <p class="hero-subtitle intro" style="--d: 0.55s;" data-i18n="hero_subtitle">
-            A step-by-step verified journey for every item from old door to new room. LiDAR scanning, physics-backed passage feasibility, and smart truck loading order in one unified platform.
+            A step-by-step, verified journey for every item, from the old door to the new room. LiDAR scanning works today as a prototype; passage checks and truck loading order are the next stages of the same plan.
           </p>
           <div class="hero-cta intro" style="--d: 0.7s;">
             <a href="#pipeline" class="btn btn-primary" id="hero-explore-btn">
-              <span data-i18n="hero_btn_explore">Explore System</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            <a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" id="hero-pdf-btn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"/></svg>
-              <span data-i18n="hero_btn_pdf">Read Proposal (PDF)</span>
+              <span data-i18n="hero_btn_explore">See How It Works</span>
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- Hero Visual Showcase -->
-        <div class="hero-showcase intro" id="hero-showcase" style="--d: 0.85s; --b: 0px;">
+        <!-- Hero drawing sheet: LiDAR sweep + one item's route through the home -->
+        <figure class="hero-showcase intro" id="hero-showcase" style="--d: 0.85s; --b: 0px;">
           <div class="hero-image-wrap">
-            <img src="assets/images/hero-concept.jpg" alt="Movewise concept: 3D LiDAR scanning and truck loading plan" class="hero-image">
-            
-            <!-- Dynamic Floating Spatial Badges -->
-            <div class="hero-overlay-tag hero-tag-1">
-              <span class="tag-dot"></span>
-              <span data-i18n="tag_lidar">iPhone LiDAR 3D Room &amp; Inventory Scan</span>
-            </div>
-            <div class="hero-overlay-tag hero-tag-2">
-              <span class="tag-dot"></span>
-              <span data-i18n="tag_motion">Piano Mover's Bottleneck Analysis</span>
-            </div>
-            <div class="hero-overlay-tag hero-tag-3">
-              <span class="tag-dot"></span>
-              <span data-i18n="tag_layout">Verified Layout &amp; Truck Loading Order</span>
-            </div>
+            <canvas class="hero-canvas" id="hero-canvas" role="img" aria-label="Animated floor plan: a LiDAR scanner maps the rooms, then one item travels through every doorway to its place in the new room"></canvas>
+            <figcaption class="hero-caption">Concept drawing</figcaption>
           </div>
-        </div>
+        </figure>
 
-        <!-- Metrics & Highlights Strip -->
-        <div class="metrics-strip intro" style="--d: 1.05s; --b: 0px;">
-          <div class="metric-card">
-            <div class="metric-icon">🔄</div>
-            <div class="metric-num" data-i18n="metric_1_val">End-to-End</div>
-            <div class="metric-label" data-i18n="metric_1_lbl">One plan from old home to new home</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-icon">📐</div>
-            <div class="metric-num" data-i18n="metric_2_val">LiDAR Powered</div>
-            <div class="metric-label" data-i18n="metric_2_lbl">Accurate 3D spatial scanning</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-icon">⚡</div>
-            <div class="metric-num" data-i18n="metric_3_val">Physics Verified</div>
-            <div class="metric-label" data-i18n="metric_3_lbl">Clearance, tilt &amp; door swing checks</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-icon">🚛</div>
-            <div class="metric-num" data-i18n="metric_4_val">Smart Logistics</div>
-            <div class="metric-label" data-i18n="metric_4_lbl">Reverse truck unloading sequence</div>
-          </div>
-        </div>
       </div>
     </section>
 
     <!-- Problem & Solution Section -->
     <section class="section" id="about">
       <div class="container">
-        <div class="section-head">
-          <div class="badge badge-stone" data-i18n="ps_badge">Problem &amp; Solution</div>
+        <div class="section-head is-left">
           <h2 class="section-title" data-i18n="ps_title">Moving is Guesswork, Furnishing is a Blind Experiment</h2>
           <p class="section-desc" data-i18n="ps_desc">
-            Until now, room scanning, moving estimates, and interior design lived in isolated tools. Movewise connects the entire journey under one roof.
+            Today, room scanning, moving estimates and interior design live in separate tools. Movewise connects them into one journey.
           </p>
         </div>
 
@@ -173,25 +125,24 @@
           <!-- Traditional Problems -->
           <div class="contrast-card problem">
             <div class="contrast-header">
-              <div class="contrast-icon">⚠️</div>
               <h3 class="contrast-title" data-i18n="prob_title">The Moving Dilemma</h3>
             </div>
             <ul class="contrast-list">
               <li class="contrast-item">
-                <span class="contrast-bullet">✕</span>
-                <span data-i18n="prob_1">A sofa fitting the old home gets stuck in the new entrance or narrow staircase.</span>
+                <svg class="icon contrast-bullet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                <span data-i18n="prob_1">A sofa that fit the old home gets stuck at the new entrance or on a narrow staircase.</span>
               </li>
               <li class="contrast-item">
-                <span class="contrast-bullet">✕</span>
-                <span data-i18n="prob_2">Moving companies quote without seeing both homes, causing surprise delays.</span>
+                <svg class="icon contrast-bullet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                <span data-i18n="prob_2">Moving companies quote without seeing both homes, so delays and extra costs surface on moving day.</span>
               </li>
               <li class="contrast-item">
-                <span class="contrast-bullet">✕</span>
-                <span data-i18n="prob_3">Furniture is bought without accounting for walkways, door swings, and sockets.</span>
+                <svg class="icon contrast-bullet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                <span data-i18n="prob_3">Furniture is bought without accounting for walkways, door swings and sockets.</span>
               </li>
               <li class="contrast-item">
-                <span class="contrast-bullet">✕</span>
-                <span data-i18n="prob_4">Unplanned truck loading creates chaos and damage during destination unloading.</span>
+                <svg class="icon contrast-bullet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                <span data-i18n="prob_4">Trucks loaded without a plan lead to chaos and damage when unloading at the new home.</span>
               </li>
             </ul>
           </div>
@@ -199,25 +150,26 @@
           <!-- Movewise Unified Solution -->
           <div class="contrast-card solution">
             <div class="contrast-header">
-              <div class="contrast-icon">✨</div>
-              <h3 class="contrast-title" data-i18n="sol_title">The Movewise Solution</h3>
+              <h3 class="contrast-title" data-i18n="sol_title">The Movewise Approach</h3>
             </div>
             <ul class="contrast-list">
               <li class="contrast-item">
-                <span class="contrast-bullet">✓</span>
-                <span data-i18n="sol_1">Step-by-step motion feasibility from source room, through stairs, into the truck, and onto destination placement.</span>
+                <svg class="icon contrast-bullet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                <span data-i18n="sol_1">Will check each item step by step: from its current room, down the stairs, into the truck and into its place in the new home.</span>
               </li>
               <li class="contrast-item">
-                <span class="contrast-bullet">✓</span>
-                <span data-i18n="sol_2">Fast iPhone LiDAR scanning with uncertainty estimation and geometric motion planning.</span>
+                <svg class="icon contrast-bullet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                <span data-i18n="sol_2">
+              Will build on iPhone LiDAR scanning, which works today as a prototype, adding uncertainty estimation and motion planning.
+            </span>
               </li>
               <li class="contrast-item">
-                <span class="contrast-bullet">✓</span>
-                <span data-i18n="sol_3">Reverse unloading order (LIFO): items needed first are packed last.</span>
+                <svg class="icon contrast-bullet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                <span data-i18n="sol_3">Will load the truck in reverse unloading order (LIFO): items needed first at the new home go in last.</span>
               </li>
               <li class="contrast-item">
-                <span class="contrast-bullet">✓</span>
-                <span data-i18n="sol_4">Guided interior layout honoring clearances, fixed utilities, and catalog dimensions.</span>
+                <svg class="icon contrast-bullet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                <span data-i18n="sol_4">Will guide the interior layout around clearances, fixed utilities and catalog dimensions.</span>
               </li>
             </ul>
           </div>
@@ -226,13 +178,12 @@
     </section>
 
     <!-- 4-Step Pipeline Section -->
-    <section class="section" id="pipeline" style="background: rgba(129, 151, 166, 0.025);">
+    <section class="section section-alt" id="pipeline">
       <div class="container">
         <div class="section-head">
-          <div class="badge badge-primary" data-i18n="pipe_badge">System Architecture</div>
-          <h2 class="section-title" data-i18n="pipe_title">Seamless 4-Stage Move &amp; Design Pipeline</h2>
+          <h2 class="section-title" data-i18n="pipe_title">The 4-Stage Move &amp; Design Pipeline</h2>
           <p class="section-desc" data-i18n="pipe_desc">
-            From the mobile LiDAR scanning app to the cloud-powered 3D web planning panel.
+            From the mobile LiDAR scanning app, working today as a prototype, to a planned 3D web planning panel.
           </p>
         </div>
 
@@ -244,54 +195,50 @@
 
         <div class="pipeline-grid">
           <!-- Step 1 -->
-          <div class="pipeline-step">
-            <span class="step-number">01</span>
-            <div class="step-icon-wrap">📱</div>
+          <div class="pipeline-step is-built">
+            <svg class="icon step-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M12 7l4 2.3v4.6L12 16l-4-2.1V9.3z"/><path d="M8 9.3l4 2.2 4-2.2M12 11.5V16"/></svg>
             <h3 class="step-title" data-i18n="step1_title">1. 3D LiDAR Scanning</h3>
             <p class="step-desc" data-i18n="step1_desc">
-              Rooms, doors, corridors, and stairs are captured using iPhone LiDAR. Inaccessible zones are added manually via floorplan input.
+              Rooms, doors, corridors and stairs are captured with iPhone LiDAR. Areas that can't be scanned are added by hand from a floor plan.
             </p>
             <div>
-              <span class="step-feature-tag" data-i18n="step1_tag">Room &amp; Item Inventory</span>
+              <span class="step-status is-proto"><span class="status-dot" aria-hidden="true"></span><span data-i18n="step1_tag">Working prototype</span></span>
             </div>
           </div>
 
           <!-- Step 2 -->
           <div class="pipeline-step">
-            <span class="step-number">02</span>
-            <div class="step-icon-wrap">🚪</div>
+            <svg class="icon step-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 19h4M18 19h4"/><path d="M6 19V7"/><path d="M6 7a12 12 0 0 1 12 12"/></svg>
             <h3 class="step-title" data-i18n="step2_title">2. Bottleneck &amp; Motion Feasibility</h3>
             <p class="step-desc" data-i18n="step2_desc">
-              Solving the classic 'Piano Mover's Problem' to calculate clearance, tilting, rotation angles, and narrow bottleneck navigation.
+              Based on the classic Piano Mover's Problem, which asks whether a rigid object can be moved through a tight space: clearance, tilt and rotation will be calculated for every narrow passage along the route.
             </p>
             <div>
-              <span class="step-feature-tag" data-i18n="step2_tag">Motion Simulation</span>
+              <span class="step-status is-planned"><span class="status-dot" aria-hidden="true"></span><span data-i18n="step2_tag">Planned</span></span>
             </div>
           </div>
 
           <!-- Step 3 -->
           <div class="pipeline-step">
-            <span class="step-number">03</span>
-            <div class="step-icon-wrap">🚛</div>
+            <svg class="icon step-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 6h11v10H2z"/><path d="M13 9h4l3 3.5V16h-7"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg>
             <h3 class="step-title" data-i18n="step3_title">3. Smart Truck Loading</h3>
             <p class="step-desc" data-i18n="step3_desc">
-              Cargo volume is organized in reverse unloading sequence, computing crew size, estimated hours, and disassembly needs.
+              The load will be ordered for reverse unloading, with crew size, estimated hours and disassembly needs worked out.
             </p>
             <div>
-              <span class="step-feature-tag" data-i18n="step3_tag">Logistics Optimization</span>
+              <span class="step-status is-planned"><span class="status-dot" aria-hidden="true"></span><span data-i18n="step3_tag">Planned</span></span>
             </div>
           </div>
 
           <!-- Step 4 -->
           <div class="pipeline-step">
-            <span class="step-number">04</span>
-            <div class="step-icon-wrap">🛋️</div>
+            <svg class="icon step-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M6 15h7v3H6zM15 6h3v6h-3z"/></svg>
             <h3 class="step-title" data-i18n="step4_title">4. Verified Interior Design</h3>
             <p class="step-desc" data-i18n="step4_desc">
-              Rooms in destination home are arranged according to interior guidelines: clearances, conversation zones, and plumbing constraints.
+              Rooms in the new home will be arranged by interior guidelines: clearances, conversation zones and plumbing constraints.
             </p>
             <div>
-              <span class="step-feature-tag" data-i18n="step4_tag">Guideline Compliant</span>
+              <span class="step-status is-planned"><span class="status-dot" aria-hidden="true"></span><span data-i18n="step4_tag">Planned</span></span>
             </div>
           </div>
         </div>
@@ -302,10 +249,9 @@
     <section class="section" id="simulator">
       <div class="container">
         <div class="section-head">
-          <div class="badge badge-scarlet" data-i18n="sim_badge">Interactive Demo</div>
           <h2 class="section-title" data-i18n="sim_title">Passage &amp; Fit Simulator</h2>
           <p class="section-desc" data-i18n="sim_desc">
-            Select a furniture item and adjust doorway/corridor width to test Movewise's feasibility algorithms in real time.
+            A simplified demo with sample furniture on a two-stop route: the front door, whose width you set, then a stair landing fixed at 86 cm (its turn isn't modeled, nor is door height). The verdict comes from the tightest point.
           </p>
         </div>
 
@@ -313,77 +259,59 @@
           <div class="sim-grid">
             <!-- Controls Column -->
             <div class="sim-controls">
-              <div class="control-group">
-                <label class="control-label">
-                  <span data-i18n="sim_furn_label">Select Furniture Item</span>
-                </label>
-                <div class="furniture-select-grid">
-                  <button type="button" class="furn-btn active" data-key="sofa" id="btn-sofa">
-                    <span>🛋️</span>
+              <div class="control-group sim-group-furn">
+                <div class="control-label">
+                  <span id="sim-furn-group-label" data-i18n="sim_furn_label">Furniture item</span>
+                </div>
+                <div class="furniture-select-grid" role="group" aria-labelledby="sim-furn-group-label">
+                  <button type="button" class="furn-btn" data-key="sofa" id="btn-sofa" aria-pressed="false">
+                    <svg class="icon furn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18v7h-7v5H3z"/><path d="M3 9h15v4"/></svg>
                     <span class="furn-name">3-Seater Sectional Sofa</span>
                   </button>
-                  <button type="button" class="furn-btn" data-key="bed" id="btn-bed">
-                    <span>🛏️</span>
+                  <button type="button" class="furn-btn" data-key="bed" id="btn-bed" aria-pressed="false">
+                    <svg class="icon furn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="1"/><rect x="7" y="5" width="4" height="3" rx="1"/><rect x="13" y="5" width="4" height="3" rx="1"/><path d="M5 10h14"/></svg>
                     <span class="furn-name">King Size Bed &amp; Base</span>
                   </button>
-                  <button type="button" class="furn-btn" data-key="wardrobe" id="btn-wardrobe">
-                    <span>🚪</span>
-                    <span class="furn-name">Solid Wardrobe</span>
+                  <button type="button" class="furn-btn" data-key="piano" id="btn-piano" aria-pressed="false">
+                    <svg class="icon furn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="7" width="18" height="10" rx="1"/><path d="M3 13h18M7 13v4M11 13v4M15 13v4M19 13v4"/></svg>
+                    <span class="furn-name">Upright Piano</span>
                   </button>
-                  <button type="button" class="furn-btn" data-key="table" id="btn-table">
-                    <span>🪑</span>
+                  <button type="button" class="furn-btn active" data-key="table" id="btn-table" aria-pressed="true">
+                    <svg class="icon furn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6" y="8" width="12" height="8" rx="1"/><path d="M8 5h3M13 5h3M8 19h3M13 19h3"/></svg>
                     <span class="furn-name">6-Person Dining Table</span>
                   </button>
                 </div>
+                <p class="sim-item-spec" id="sim-item-spec">225 × 95 × 85 cm · 78 kg · 2 movers<br><span>Opening needed:</span> upright &gt; 95 cm · on its back &gt; 85 cm</p>
               </div>
 
-              <div class="control-group">
+              <div class="control-group sim-group-door">
                 <div class="control-label">
-                  <span data-i18n="sim_door_label">Clear Doorway / Hallway Width</span>
-                  <span class="control-val" id="door-width-val">85 cm</span>
+                  <span id="sim-door-label" data-i18n="sim_door_label">Front door clear width</span>
+                  <span class="control-val" id="door-width-val">80 cm</span>
                 </div>
-                <input type="range" class="slider-input" id="door-width-slider" min="65" max="130" value="85" step="1">
+                <input type="range" class="slider-input" id="door-width-slider" min="60" max="170" value="80" step="1" aria-labelledby="sim-door-label" aria-valuetext="80 cm" aria-describedby="sim-landing-mark">
+                <span class="slider-mark" id="sim-landing-mark" style="--f: 0.236">landing 86 cm</span>
               </div>
 
-              <!-- Recommendation Note Box -->
-              <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1rem;">
-                <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-cyan); font-weight: 700; margin-bottom: 0.35rem;">
-                  Movewise Planner Advice:
-                </div>
-                <p id="sim-advise-text" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
-                  Calculating...
-                </p>
-              </div>
             </div>
 
             <!-- Visualization & Results Column -->
             <div class="sim-preview">
-              <!-- Visual Canvas Display -->
-              <div class="sim-canvas-box" id="sim-canvas-box">
-                <!-- SVG dynamically rendered by JS -->
+              <!-- The route: both stops, each with its own pose and clearance -->
+              <ol class="sim-route" id="sim-route" aria-label="Route">
+                <li class="sim-stop" id="sim-stop-door"><span class="sim-stop-node" aria-hidden="true"></span><span class="sim-stop-name">Front door</span><span class="sim-stop-detail">80 cm · on its side +4 cm</span></li>
+                <li class="sim-stop" id="sim-stop-landing"><span class="sim-stop-node" aria-hidden="true"></span><span class="sim-stop-name">Stair landing</span><span class="sim-stop-detail">86 cm · on its side +10 cm</span></li>
+              </ol>
+
+              <!-- Plan view of the tightest stop -->
+              <div class="sim-canvas-box" id="sim-canvas-box"></div>
+
+              <div class="sim-status-banner status-pass" id="sim-status-box" role="status" aria-live="polite">
+                <span id="sim-status-text">Fits the whole route (+4 cm at the front door)</span>
+                <span id="sim-status-icon" class="sim-status-icon" aria-hidden="true"></span>
               </div>
 
-              <!-- Result Status Banner -->
-              <div class="sim-status-banner status-pass" id="sim-status-box">
-                <span id="sim-status-text">Feasible Pass (Straight Passage)</span>
-                <span id="sim-status-icon" style="font-size: 1.2rem;">✓</span>
-              </div>
-
-              <!-- Stats Breakdown -->
-              <div class="sim-stats-grid">
-                <div class="sim-stat-box">
-                  <div class="sim-stat-val" id="sim-clearance-val">+5 cm</div>
-                  <div class="sim-stat-label" data-i18n="sim_stat_clearance">Safety Clearance</div>
-                </div>
-                <div class="sim-stat-box">
-                  <div class="sim-stat-val" id="sim-crew-val">2 Movers</div>
-                  <div class="sim-stat-label" data-i18n="sim_stat_crew">Crew Required</div>
-                </div>
-                <div class="sim-stat-box">
-                  <div class="sim-stat-val" id="sim-weight-val">78 kg</div>
-                  <div class="sim-stat-label" data-i18n="sim_stat_weight">Item Weight</div>
-                </div>
-              </div>
+              <p class="sim-note-text" id="sim-advise-text">Carried on its side, the table clears the tightest point, the front door, with +4 cm. Upright it would need more than 90 cm.</p>
             </div>
           </div>
         </div>
@@ -393,11 +321,10 @@
     <!-- Comparison Section -->
     <section class="section" id="comparison">
       <div class="container">
-        <div class="section-head">
-          <div class="badge badge-primary" data-i18n="comp_badge">Innovation</div>
+        <div class="section-head is-left">
           <h2 class="section-title" data-i18n="comp_title">Comparison with Existing Solutions</h2>
           <p class="section-desc" data-i18n="comp_desc">
-            Movewise is the first platform that brings scanning, interior design, and home-to-home move planning under one roof.
+            Existing tools each solve one part of a move. Movewise links scanning, move planning and interior layout into one connected plan.
           </p>
         </div>
 
@@ -408,33 +335,33 @@
                 <th data-i18n="th_solution">Solution</th>
                 <th data-i18n="th_strength">Strength</th>
                 <th data-i18n="th_limitation">Limitation</th>
-                <th class="table-highlight-head" data-i18n="th_movewise">Movewise Advantage</th>
+                <th class="table-highlight-head" data-i18n="th_movewise">How Movewise Differs</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Apple RoomPlan & magicplan</strong></td>
-                <td>LiDAR room scanning and floor plan generation</td>
-                <td>No passage feasibility or motion planning</td>
-                <td class="table-highlight"><span class="check-icon">✓</span> Connects the scan directly to physical motion analysis</td>
+                <td data-label="Solution"><strong>Apple RoomPlan & magicplan</strong></td>
+                <td data-label="Strength">LiDAR room scanning and floor plan generation</td>
+                <td data-label="Limitation">No passage feasibility or motion planning</td>
+                <td data-label="How Movewise Differs" class="table-highlight"><svg class="icon check-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Designed to connect the scan directly to physical motion analysis</td>
               </tr>
               <tr>
-                <td><strong>IKEA Kreativ & Planner 5D</strong></td>
-                <td>Furniture visualization and automatic layout</td>
-                <td>Never checks how items will reach the room or pass through doors</td>
-                <td class="table-highlight"><span class="check-icon">✓</span> Validates layouts against door, corridor and staircase constraints</td>
+                <td data-label="Solution"><strong>IKEA Kreativ & Planner 5D</strong></td>
+                <td data-label="Strength">Furniture visualization and automatic layout</td>
+                <td data-label="Limitation">Never checks how items will reach the room or pass through doors</td>
+                <td data-label="How Movewise Differs" class="table-highlight"><svg class="icon check-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Will check layouts against door, corridor and staircase constraints</td>
               </tr>
               <tr>
-                <td><strong>Smart Moving & ItemFits</strong></td>
-                <td>Single-item fit and rotation checks for doors and elevators</td>
-                <td>Dimensions entered by hand; no multi-item or route planning</td>
-                <td class="table-highlight"><span class="check-icon">✓</span> Solves chained bottlenecks across the whole home, plus item ordering</td>
+                <td data-label="Solution"><strong>Smart Moving & ItemFits</strong></td>
+                <td data-label="Strength">Single-item fit and rotation checks for doors and elevators</td>
+                <td data-label="Limitation">Dimensions entered by hand; no multi-item or route planning</td>
+                <td data-label="How Movewise Differs" class="table-highlight"><svg class="icon check-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Aims to solve chained bottlenecks across the whole home, plus item ordering</td>
               </tr>
               <tr>
-                <td><strong>Yembo (AI Video)</strong></td>
-                <td>Moving quotes from inventory and volume estimates</td>
-                <td>No route feasibility, layout or moving-order plan</td>
-                <td class="table-highlight"><span class="check-icon">✓</span> Computes truck loading order (LIFO) and assembly constraints</td>
+                <td data-label="Solution"><strong>Yembo (AI Video)</strong></td>
+                <td data-label="Strength">Moving quotes from inventory and volume estimates</td>
+                <td data-label="Limitation">No route feasibility, layout or moving-order plan</td>
+                <td data-label="How Movewise Differs" class="table-highlight"><svg class="icon check-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Will plan truck loading order (LIFO) and disassembly needs</td>
               </tr>
             </tbody>
           </table>
@@ -443,55 +370,54 @@
     </section>
 
     <!-- Target Audience / Value Props -->
-    <section class="section" id="target" style="background: rgba(129, 151, 166, 0.025);">
+    <section class="section section-alt" id="target">
       <div class="container">
-        <div class="section-head">
-          <div class="badge badge-stone" data-i18n="target_badge">Value Proposition</div>
-          <h2 class="section-title" data-i18n="target_title">Built For Every Stakeholder</h2>
+        <div class="section-head is-left">
+          <h2 class="section-title" data-i18n="target_title">Who It's For</h2>
           <p class="section-desc" data-i18n="target_desc">
-            Movewise eliminates friction and costly surprises for both consumers and logistics professionals.
+            Who Movewise is being designed for, and what each of them would get from it.
           </p>
         </div>
 
         <div class="target-grid">
           <!-- Segment 1: Moving Companies -->
           <div class="target-card">
-            <div class="target-icon">🚚</div>
+            <svg class="icon target-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 6h11v10H2z"/><path d="M13 9h4l3 3.5V16h-7"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg>
             <h3 class="target-title" data-i18n="t1_title">Moving Companies</h3>
             <div class="target-problem" data-i18n="t1_prob">Quotes given without seeing both homes</div>
             <p class="target-value" data-i18n="t1_val">
-              Pre-move survey with crew size, truck space, disassembly requirements, and optimized loading order.
-            </p>
+            A pre-move survey that would set crew size, truck space, disassembly needs and loading order.
+          </p>
           </div>
 
           <!-- Segment 2: Individual Movers -->
           <div class="target-card">
-            <div class="target-icon">🏡</div>
+            <svg class="icon target-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 15h6M13 13l2 2-2 2"/></svg>
             <h3 class="target-title" data-i18n="t2_title">Home Movers</h3>
             <div class="target-problem" data-i18n="t2_prob">Anxiety over whether items will fit</div>
             <p class="target-value" data-i18n="t2_val">
-              One transparent plan proving what fits and how to move each piece without surprises.
-            </p>
+            One plan that would show what fits and how to move each piece.
+          </p>
           </div>
 
           <!-- Segment 3: Home Furnishers -->
           <div class="target-card">
-            <div class="target-icon">🛋️</div>
+            <svg class="icon target-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M3 13a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v4H3z"/><path d="M5 17v2M19 17v2"/></svg>
             <h3 class="target-title" data-i18n="t3_title">Home Furnishers</h3>
             <div class="target-problem" data-i18n="t3_prob">Layouts ignoring real spatial dimensions</div>
             <p class="target-value" data-i18n="t3_val">
-              Guided design taking into account clearances, door swings, and wall sockets.
-            </p>
+            Guided layouts that would account for clearances, door swings and wall sockets.
+          </p>
           </div>
 
           <!-- Segment 4: Furniture Retailers -->
           <div class="target-card">
-            <div class="target-icon">🏬</div>
+            <svg class="icon target-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
             <h3 class="target-title" data-i18n="t4_title">Furniture Retailers</h3>
             <div class="target-problem" data-i18n="t4_prob">Expensive failed deliveries and returns</div>
             <p class="target-value" data-i18n="t4_val">
-              Pre-purchase path validation confirming the item can physically enter the customer's apartment.
-            </p>
+            A pre-purchase path check that would test whether the item can get into the customer's home.
+          </p>
           </div>
         </div>
       </div>
@@ -500,129 +426,125 @@
     <!-- Team & Academic Section -->
     <section class="section" id="team">
       <div class="container">
-        <div class="section-head">
-          <div class="badge badge-primary" data-i18n="team_badge">Project Team</div>
+        <div class="section-head is-left">
           <h2 class="section-title" data-i18n="team_title">Bilkent CS491 Development Team</h2>
           <p class="section-desc" data-i18n="team_desc">
-            Senior Design Project developed by Computer Engineering students at Bilkent University.
+            CS491 &amp; CS492 Senior Design Project, academic year 2026–2027, by Computer Engineering students at Bilkent University.
           </p>
         </div>
 
         <div class="team-grid">
           <!-- Member 1 -->
           <div class="team-card">
-            <div class="team-avatar">HA</div>
-            <h4 class="team-name">Hüsnü Arkca</h4>
-            <div class="team-role">Computer Engineering</div>
-            <a href="mailto:husnu.arkca@ug.bilkent.edu.tr" class="team-email">husnu.arkca@ug.bilkent.edu.tr</a>
+            <div class="team-avatar" aria-hidden="true">HA</div>
+            <h3 class="team-name">Hüsnü Arkca</h3>
+            <a href="mailto:husnu.arkca@ug.bilkent.edu.tr" class="team-email">husnu.arkca<wbr>@ug.bilkent.edu.tr</a>
           </div>
 
           <!-- Member 2 -->
           <div class="team-card">
-            <div class="team-avatar">AM</div>
-            <h4 class="team-name">Aral Müftüoğlu</h4>
-            <div class="team-role">Computer Engineering</div>
-            <a href="mailto:aral.muftuoglu@ug.bilkent.edu.tr" class="team-email">aral.muftuoglu@ug.bilkent.edu.tr</a>
+            <div class="team-avatar" aria-hidden="true">AM</div>
+            <h3 class="team-name">Aral Müftüoğlu</h3>
+            <a href="mailto:aral.muftuoglu@ug.bilkent.edu.tr" class="team-email">aral.muftuoglu<wbr>@ug.bilkent.edu.tr</a>
           </div>
 
           <!-- Member 3 -->
           <div class="team-card">
-            <div class="team-avatar">OY</div>
-            <h4 class="team-name">Onur Ege Yakar</h4>
-            <div class="team-role">Computer Engineering</div>
-            <a href="mailto:ege.yakar@ug.bilkent.edu.tr" class="team-email">ege.yakar@ug.bilkent.edu.tr</a>
+            <div class="team-avatar" aria-hidden="true">OY</div>
+            <h3 class="team-name">Onur Ege Yakar</h3>
+            <a href="mailto:ege.yakar@ug.bilkent.edu.tr" class="team-email">ege.yakar<wbr>@ug.bilkent.edu.tr</a>
           </div>
 
           <!-- Member 4 -->
           <div class="team-card">
-            <div class="team-avatar">YA</div>
-            <h4 class="team-name">Yunus Emre Aslan</h4>
-            <div class="team-role">Computer Engineering</div>
-            <a href="mailto:emre.aslan@ug.bilkent.edu.tr" class="team-email">emre.aslan@ug.bilkent.edu.tr</a>
+            <div class="team-avatar" aria-hidden="true">YA</div>
+            <h3 class="team-name">Yunus Emre Aslan</h3>
+            <a href="mailto:emre.aslan@ug.bilkent.edu.tr" class="team-email">emre.aslan<wbr>@ug.bilkent.edu.tr</a>
           </div>
 
           <!-- Member 5 -->
           <div class="team-card">
-            <div class="team-avatar">MD</div>
-            <h4 class="team-name">Mehmet Dizdar</h4>
-            <div class="team-role">Computer Engineering</div>
-            <a href="mailto:mehmet.dizdar@ug.bilkent.edu.tr" class="team-email">mehmet.dizdar@ug.bilkent.edu.tr</a>
-          </div>
-        </div>
-
-        <!-- Academic Affiliation Banner -->
-        <div class="academic-card">
-          <div class="academic-info">
-            <h3 data-i18n="academic_title">Bilkent University Computer Engineering</h3>
-            <p data-i18n="academic_desc">CS491 &amp; CS492 Senior Design Project • Academic Year 2026-2027</p>
-          </div>
-          <div>
-            <a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="academic-download-btn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              <span data-i18n="btn_download_pdf">Download Proposal PDF</span>
-            </a>
+            <div class="team-avatar" aria-hidden="true">MD</div>
+            <h3 class="team-name">Mehmet Dizdar</h3>
+            <a href="mailto:mehmet.dizdar@ug.bilkent.edu.tr" class="team-email">mehmet.dizdar<wbr>@ug.bilkent.edu.tr</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Documents & Deliverables Section -->
-    <section class="section" id="documents" style="background: rgba(129, 151, 166, 0.025);">
+    <section class="section section-alt" id="documents">
       <div class="container">
         <div class="section-head">
-          <div class="badge badge-scarlet" data-i18n="docs_badge">Project Milestones</div>
           <h2 class="section-title" data-i18n="docs_title">Project Deliverables &amp; Reports</h2>
           <p class="section-desc" data-i18n="docs_desc">
-            All official academic deliverables produced during CS491/492.
+            Official CS491/492 deliverables, published here as each one is completed.
           </p>
         </div>
 
-        <div class="docs-grid">
+        <ol class="docs-grid docs-route">
           <!-- Deliverable 1: Short Proposal -->
-          <div class="doc-card">
+          <li class="doc-card is-done">
+            <span class="route-node" aria-hidden="true"></span>
+            <span class="route-seg" aria-hidden="true"></span>
             <div class="doc-status ready">
-              <span>●</span>
-              <span data-i18n="doc1_status">Completed &amp; Available</span>
+              <span class="status-dot" aria-hidden="true"></span>
+              <span data-i18n="doc1_status">Available</span>
             </div>
             <h3 class="doc-title" data-i18n="doc1_title">Short Project Proposal</h3>
             <p class="doc-desc" data-i18n="doc1_desc">
-              Problem definition, constraints, system overview, related work comparison, and evaluation methodology.
+              Problem definition, constraints, system overview, related work comparison and evaluation methodology.
             </p>
-            <a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span data-i18n="doc1_btn">View / Download PDF</span>
-            </a>
-          </div>
+            <a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span data-i18n="doc1_btn">Open PDF</span>
+            <span class="sr-only"> (opens in a new tab)</span></a>
+          </li>
 
           <!-- Deliverable 2: Requirements & Analysis -->
-          <div class="doc-card">
-            <div class="doc-status upcoming">
-              <span>○</span>
+          <li class="doc-card is-progress">
+            <span class="route-node" aria-hidden="true"></span>
+            <span class="route-seg" aria-hidden="true"></span>
+            <div class="doc-status progress">
+              <span class="status-dot" aria-hidden="true"></span>
               <span data-i18n="doc2_status">In Progress</span>
             </div>
             <h3 class="doc-title" data-i18n="doc2_title">Requirements &amp; Analysis Report</h3>
             <p class="doc-desc" data-i18n="doc2_desc">
-              User stories, system constraints, functional requirements, and preliminary data specifications.
+              User stories, system constraints, functional requirements and preliminary data specifications.
             </p>
-            <button class="btn btn-secondary btn-sm" disabled style="opacity: 0.6; cursor: not-allowed;">
-              <span data-i18n="doc2_btn">Coming Soon</span>
-            </button>
-          </div>
+          </li>
 
           <!-- Deliverable 3: Detailed Design -->
-          <div class="doc-card">
+          <li class="doc-card is-scheduled">
+            <span class="route-node" aria-hidden="true"></span>
             <div class="doc-status upcoming">
-              <span>○</span>
+              <span class="status-dot" aria-hidden="true"></span>
               <span data-i18n="doc3_status">Scheduled</span>
             </div>
             <h3 class="doc-title" data-i18n="doc3_title">Detailed Design &amp; Architecture</h3>
             <p class="doc-desc" data-i18n="doc3_desc">
-              3D spatial engine, motion planning algorithm specifications, and cloud API contracts.
+              3D spatial engine, motion planning algorithm specifications and cloud API contracts.
             </p>
-            <button class="btn btn-secondary btn-sm" disabled style="opacity: 0.6; cursor: not-allowed;">
-              <span data-i18n="doc3_btn">Coming Soon</span>
-            </button>
+          </li>
+        </ol>
+
+        <div class="route-close">
+          <p class="route-end">
+            <span class="route-end-node" aria-hidden="true"></span>
+            <span><strong>Where the route stands:</strong> stage 1, LiDAR scanning, works as a prototype. Next stop: the Requirements &amp; Analysis Report.</span>
+          </p>
+          <div class="route-actions">
+            <a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7z"/><path d="M14 3v4h4M9 13h6M9 17h4"/></svg>
+              <span>Read the proposal (PDF)</span><span class="sr-only"> (opens in a new tab)</span>
+            </a>
+            <a href="mailto:ege.yakar@ug.bilkent.edu.tr?cc=husnu.arkca@ug.bilkent.edu.tr,aral.muftuoglu@ug.bilkent.edu.tr,emre.aslan@ug.bilkent.edu.tr,mehmet.dizdar@ug.bilkent.edu.tr&amp;subject=Movewise" class="btn btn-secondary">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg>
+              <span>Email the team</span>
+            </a>
           </div>
+          <p class="route-contact-note">A hard doorway to test, a question or feedback? Write to <span class="route-address">ege.yakar@ug.bilkent.edu.tr</span>.</p>
         </div>
       </div>
     </section>
@@ -633,49 +555,35 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="#hero" class="brand">
-            <img src="assets/images/logo.svg" alt="Movewise Logo" class="brand-icon">
+          <a href="#hero" class="brand" aria-label="Movewise, back to top">
+            <img src="assets/images/logo.svg?v=6" alt="" class="brand-icon">
             <span>Movewise</span>
           </a>
           <p>
-            Home-to-Home Moving & Verified Interior Design, with a Step-by-Step Journey for Every Item.
+            Home-to-home moving and verified interior design, with a step-by-step journey for every item.
           </p>
         </div>
 
         <div class="footer-col">
-          <h4 data-i18n="footer_quick_links">Quick Links</h4>
+          <h3 data-i18n="footer_academic">Academic Links</h3>
           <ul class="footer-links">
-            <li><a href="#about" data-i18n="nav_about">About</a></li>
-            <li><a href="#pipeline" data-i18n="nav_how">How It Works</a></li>
-            <li><a href="#simulator" data-i18n="nav_simulator">Fit Simulator</a></li>
-            <li><a href="#comparison" data-i18n="nav_features">Features</a></li>
-            <li><a href="#team" data-i18n="nav_team">Team &amp; CS491</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4 data-i18n="footer_academic">Academic Links</h4>
-          <ul class="footer-links">
-            <li><a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer">Proposal PDF</a></li>
-            <li><a href="https://www.cs.bilkent.edu.tr" target="_blank" rel="noopener noreferrer">Bilkent CS</a></li>
-            <li><a href="https://github.com/movewise-project/movewise-project.github.io" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+            <li><a href="assets/docs/Movewise_Proposal.pdf" target="_blank" rel="noopener noreferrer">Proposal (PDF)<span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li><a href="https://www.cs.bilkent.edu.tr" target="_blank" rel="noopener noreferrer">Bilkent CS<span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li><a href="https://github.com/movewise-project/movewise-project.github.io" target="_blank" rel="noopener noreferrer">GitHub Repository<span class="sr-only"> (opens in a new tab)</span></a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
         <div>
-          © 2026 Movewise Team • Bilkent University CS491 Senior Design Project. <span data-i18n="footer_rights">All rights reserved.</span>
-        </div>
-        <div>
-          Designed for GitHub Pages
+          © 2026 Movewise Team • Bilkent University CS491 Senior Design Project.
         </div>
       </div>
     </div>
   </footer>
 
   <!-- Scripts -->
-  <script src="assets/js/main.js?v=2"></script>
-  <script src="assets/js/motion.js?v=2"></script>
+  <script src="assets/js/main.js?v=19"></script>
+  <script src="assets/js/motion.js?v=16"></script>
 </body>
 </html>

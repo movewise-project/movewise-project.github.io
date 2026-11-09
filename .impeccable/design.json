@@ -1,0 +1,520 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-09T18:57:52.643544+00:00",
+  "title": "Design System: Movewise",
+  "extensions": {
+    "colorMeta": {
+      "egyptian": {
+        "role": "primary",
+        "displayName": "Egyptian Blue",
+        "canonical": "#1034A6",
+        "tonalRamp": [
+          "#141D39",
+          "#1B2D65",
+          "#1D3A96",
+          "#1847DD",
+          "#4F73E3",
+          "#8CA1E3",
+          "#C2CCEA",
+          "#EDF0F7"
+        ]
+      },
+      "egyptian-600": {
+        "role": "primary",
+        "displayName": "Lifted Egyptian",
+        "canonical": "#1A43C4",
+        "tonalRamp": [
+          "#151D37",
+          "#1E2E62",
+          "#213C91",
+          "#1F4BD6",
+          "#5475DE",
+          "#8FA3E0",
+          "#C4CDE9",
+          "#EEF0F7"
+        ]
+      },
+      "egyptian-bright": {
+        "role": "primary",
+        "displayName": "Signal Blue",
+        "canonical": "#4D78F0",
+        "tonalRamp": [
+          "#141D39",
+          "#1A2E65",
+          "#1B3C97",
+          "#164BDF",
+          "#4D75E5",
+          "#8BA3E4",
+          "#C2CDEB",
+          "#EDF0F7"
+        ]
+      },
+      "egyptian-tint": {
+        "role": "primary",
+        "displayName": "Pale Egyptian",
+        "canonical": "#C9D6FF",
+        "tonalRamp": [
+          "#101B3C",
+          "#13296C",
+          "#1033A2",
+          "#033CF2",
+          "#3F6AF3",
+          "#839CEC",
+          "#BECAEE",
+          "#ECEFF8"
+        ]
+      },
+      "stone": {
+        "role": "secondary",
+        "displayName": "Stone Blue",
+        "canonical": "#8197A6",
+        "tonalRamp": [
+          "#22272A",
+          "#384147",
+          "#4D5C66",
+          "#667E8F",
+          "#8A9CA8",
+          "#AFB9C1",
+          "#D2D7DA",
+          "#F1F2F3"
+        ]
+      },
+      "stone-light": {
+        "role": "secondary",
+        "displayName": "Survey Stone",
+        "canonical": "#B9C8D3",
+        "tonalRamp": [
+          "#21272B",
+          "#36414A",
+          "#495C6A",
+          "#5F7F96",
+          "#859CAD",
+          "#ACB9C4",
+          "#D1D7DC",
+          "#F1F2F4"
+        ]
+      },
+      "stone-dark": {
+        "role": "secondary",
+        "displayName": "Deep Stone",
+        "canonical": "#4E6271",
+        "tonalRamp": [
+          "#22272A",
+          "#384148",
+          "#4C5B67",
+          "#657E90",
+          "#899BA9",
+          "#AEB9C1",
+          "#D2D7DB",
+          "#F1F2F3"
+        ]
+      },
+      "scarlet": {
+        "role": "tertiary",
+        "displayName": "Scarlet",
+        "canonical": "#FF2400",
+        "tonalRamp": [
+          "#3C1610",
+          "#6C2013",
+          "#A22510",
+          "#F22503",
+          "#F3593F",
+          "#EC9283",
+          "#EEC5BE",
+          "#F8EEEC"
+        ]
+      },
+      "scarlet-soft": {
+        "role": "tertiary",
+        "displayName": "Soft Scarlet",
+        "canonical": "#FF5A3D",
+        "tonalRamp": [
+          "#3C1710",
+          "#6C2013",
+          "#A22610",
+          "#F22703",
+          "#F35A3F",
+          "#EC9383",
+          "#EEC5BE",
+          "#F8EEEC"
+        ]
+      },
+      "scarlet-tint": {
+        "role": "tertiary",
+        "displayName": "Scarlet Tint",
+        "canonical": "#FFB3A6",
+        "tonalRamp": [
+          "#3C1710",
+          "#6C2013",
+          "#A22510",
+          "#F22603",
+          "#F3593F",
+          "#EC9283",
+          "#EEC5BE",
+          "#F8EEEC"
+        ]
+      },
+      "warn-amber": {
+        "role": "tertiary",
+        "displayName": "Warning Amber",
+        "canonical": "#F2A93B",
+        "tonalRamp": [
+          "#3A2A13",
+          "#674819",
+          "#996619",
+          "#E39012",
+          "#E8A94A",
+          "#E6C18A",
+          "#EBDAC1",
+          "#F7F3ED"
+        ]
+      },
+      "bg-deep": {
+        "role": "neutral",
+        "displayName": "Night Field",
+        "canonical": "#050913",
+        "tonalRamp": [
+          "#192133",
+          "#26355A",
+          "#2F4784",
+          "#355DC0",
+          "#6583CD",
+          "#99AAD6",
+          "#C8D0E4",
+          "#EFF1F6"
+        ]
+      },
+      "bg-main": {
+        "role": "neutral",
+        "displayName": "Night Panel",
+        "canonical": "#08101F",
+        "tonalRamp": [
+          "#192233",
+          "#25385A",
+          "#2E4C84",
+          "#3465C1",
+          "#6489CE",
+          "#99AED7",
+          "#C8D2E4",
+          "#EFF1F6"
+        ]
+      },
+      "text-primary": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "#F3F6FA",
+        "tonalRamp": [
+          "#1D252F",
+          "#2D3D52",
+          "#3B5577",
+          "#4973AC",
+          "#7494BE",
+          "#A2B5CD",
+          "#CCD5E0",
+          "#F0F2F5"
+        ]
+      },
+      "text-secondary": {
+        "role": "neutral",
+        "displayName": "Mist",
+        "canonical": "#A3B3C0",
+        "tonalRamp": [
+          "#22272A",
+          "#374148",
+          "#4C5B67",
+          "#647D91",
+          "#889BAA",
+          "#AEB9C1",
+          "#D2D7DB",
+          "#F1F2F3"
+        ]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Fog",
+        "canonical": "#6F8291",
+        "tonalRamp": [
+          "#232729",
+          "#3A4046",
+          "#4F5A63",
+          "#6A7C8A",
+          "#8D9AA5",
+          "#B1B8BF",
+          "#D3D7D9",
+          "#F1F2F3"
+        ]
+      },
+      "bg-card": {
+        "role": "neutral",
+        "displayName": "Glass Card",
+        "canonical": "rgba(12, 20, 40, 0.72)"
+      },
+      "bg-card-hover": {
+        "role": "neutral",
+        "displayName": "Glass Card (hover)",
+        "canonical": "rgba(18, 30, 58, 0.85)"
+      },
+      "border-subtle": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(129, 151, 166, 0.14)"
+      },
+      "border-glow": {
+        "role": "neutral",
+        "displayName": "Glow Line",
+        "canonical": "rgba(77, 120, 240, 0.38)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only; words rise in, accent phrase shimmers."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Centered section titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card, step and document titles."
+      },
+      "body-lead": {
+        "displayName": "Body Lead",
+        "purpose": "Section descriptions under the headline, max 760px."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase badges, eyebrows, table headers, statuses."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "System-produced measurements in the simulator."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-sm",
+        "value": "0 2px 8px rgba(0, 0, 0, 0.3)",
+        "purpose": "Small controls."
+      },
+      {
+        "name": "lift",
+        "value": "0 14px 40px -12px rgba(0, 0, 0, 0.6)",
+        "purpose": "Cards on hover, comparison table."
+      },
+      {
+        "name": "stage",
+        "value": "0 30px 70px -20px rgba(0, 0, 0, 0.75)",
+        "purpose": "Featured surfaces, paired with halo."
+      },
+      {
+        "name": "halo",
+        "value": "0 0 60px -10px rgba(77, 120, 240, 0.35)",
+        "purpose": "Blue glow marking a featured surface."
+      },
+      {
+        "name": "button-glow",
+        "value": "0 6px 22px -6px rgba(77, 120, 240, 0.6)",
+        "purpose": "Primary button at rest."
+      },
+      {
+        "name": "node-glow",
+        "value": "0 0 0 5px rgba(77, 120, 240, 0.12), 0 0 16px rgba(77, 120, 240, 0.6)",
+        "purpose": "Verified route nodes."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Default decelerating curve for movement and reveals."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "purpose": "Looping ambient motion (orbs, shimmer)."
+      },
+      {
+        "name": "transition-fast",
+        "value": "0.2s ease",
+        "purpose": "Small color changes."
+      },
+      {
+        "name": "transition-normal",
+        "value": "0.45s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Hover lifts and glows."
+      },
+      {
+        "name": "transition-slow",
+        "value": "0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Reveals and large movements."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "nav-compact",
+        "value": "1240px"
+      },
+      {
+        "name": "nav-collapse",
+        "value": "1180px"
+      },
+      {
+        "name": "tablet",
+        "value": "1024px"
+      },
+      {
+        "name": "mobile",
+        "value": "768px"
+      },
+      {
+        "name": "small",
+        "value": "480px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main call to action; blue gradient with light sweep and lift on hover.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Explore System <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></button>",
+      "css": ":host{--egyptian:#1034A6;--egyptian-600:#1A43C4;--egyptian-bright:#4D78F0;--stone-light:#B9C8D3;--scarlet:#FF2400;--scarlet-soft:#FF5A3D;--egyptian-rgb:16,52,166;--egyptian-bright-rgb:77,120,240;--stone-rgb:129,151,166;--scarlet-rgb:255,36,0;--bg-card:rgba(12,20,40,0.72);--border-subtle:rgba(129,151,166,0.14);--border-glow:rgba(77,120,240,0.38);--text-primary:#F3F6FA;--text-secondary:#A3B3C0;--text-muted:#6F8291;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.4rem;border-radius:14px;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:0.95rem;font-weight:600;cursor:pointer;border:1px solid transparent;position:relative;overflow:hidden;isolation:isolate;transition:transform .45s var(--ease-out),box-shadow .45s var(--ease-out),background .3s ease,border-color .3s ease,color .3s ease;} .ds-btn svg{transition:translate .45s var(--ease-out);} .ds-btn:hover svg{translate:3px 0;} .ds-btn:focus-visible{outline:2px solid var(--scarlet-soft);outline-offset:3px;} .ds-btn-primary{background:linear-gradient(135deg,var(--egyptian) 0%,var(--egyptian-600) 55%,var(--egyptian-bright) 100%);color:#fff;border-color:rgba(var(--egyptian-bright-rgb),0.5);box-shadow:0 6px 22px -6px rgba(var(--egyptian-bright-rgb),0.6);} .ds-btn-primary::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,0.28) 50%,transparent 70%);translate:-120% 0;transition:translate .9s var(--ease-out);} .ds-btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(var(--egyptian-bright-rgb),0.75),0 0 0 1px rgba(var(--scarlet-rgb),0.45);} .ds-btn-primary:hover::after{translate:120% 0;}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Quiet glass alternative next to a primary action.",
+      "html": "<button class=\"ds-btn ds-btn-secondary\">Read Proposal</button>",
+      "css": ":host{--egyptian:#1034A6;--egyptian-600:#1A43C4;--egyptian-bright:#4D78F0;--stone-light:#B9C8D3;--scarlet:#FF2400;--scarlet-soft:#FF5A3D;--egyptian-rgb:16,52,166;--egyptian-bright-rgb:77,120,240;--stone-rgb:129,151,166;--scarlet-rgb:255,36,0;--bg-card:rgba(12,20,40,0.72);--border-subtle:rgba(129,151,166,0.14);--border-glow:rgba(77,120,240,0.38);--text-primary:#F3F6FA;--text-secondary:#A3B3C0;--text-muted:#6F8291;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.4rem;border-radius:14px;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:0.95rem;font-weight:600;cursor:pointer;border:1px solid transparent;position:relative;overflow:hidden;isolation:isolate;transition:transform .45s var(--ease-out),box-shadow .45s var(--ease-out),background .3s ease,border-color .3s ease,color .3s ease;} .ds-btn svg{transition:translate .45s var(--ease-out);} .ds-btn:hover svg{translate:3px 0;} .ds-btn:focus-visible{outline:2px solid var(--scarlet-soft);outline-offset:3px;} .ds-btn-secondary{background:rgba(var(--stone-rgb),0.07);border-color:var(--border-subtle);color:var(--text-primary);backdrop-filter:blur(10px);} .ds-btn-secondary:hover{background:rgba(var(--stone-rgb),0.14);border-color:rgba(var(--stone-rgb),0.45);transform:translateY(-2px);}"
+    },
+    {
+      "name": "Badge",
+      "kind": "chip",
+      "refersTo": "badge-primary",
+      "description": "Hero affiliation badge: uppercase pill with a scarlet pulse dot. Never above section headings.",
+      "html": "<span class=\"ds-badge ds-badge-primary\"><span class=\"ds-dot\"></span>Bilkent University • CS491 Senior Design Project</span>",
+      "css": ":host{--egyptian:#1034A6;--egyptian-600:#1A43C4;--egyptian-bright:#4D78F0;--stone-light:#B9C8D3;--scarlet:#FF2400;--scarlet-soft:#FF5A3D;--egyptian-rgb:16,52,166;--egyptian-bright-rgb:77,120,240;--stone-rgb:129,151,166;--scarlet-rgb:255,36,0;--bg-card:rgba(12,20,40,0.72);--border-subtle:rgba(129,151,166,0.14);--border-glow:rgba(77,120,240,0.38);--text-primary:#F3F6FA;--text-secondary:#A3B3C0;--text-muted:#6F8291;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-badges{display:flex;gap:0.75rem;flex-wrap:wrap;} .ds-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.35rem 0.9rem;border-radius:9999px;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:0.82rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;} .ds-badge-primary{background:rgba(var(--egyptian-rgb),0.28);border:1px solid rgba(var(--egyptian-bright-rgb),0.45);color:#C9D6FF;} .ds-dot{width:7px;height:7px;border-radius:50%;background:var(--scarlet);}"
+    },
+    {
+      "name": "Glass Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Default translucent card; border turns blue and lifts on hover.",
+      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Smart Truck Loading</h3><p class=\"ds-card-desc\">Cargo is organized in reverse unloading order, with crew size and estimated hours.</p><span class=\"ds-tag\">Logistics Optimization</span></article>",
+      "css": ":host{--egyptian:#1034A6;--egyptian-600:#1A43C4;--egyptian-bright:#4D78F0;--stone-light:#B9C8D3;--scarlet:#FF2400;--scarlet-soft:#FF5A3D;--egyptian-rgb:16,52,166;--egyptian-bright-rgb:77,120,240;--stone-rgb:129,151,166;--scarlet-rgb:255,36,0;--bg-card:rgba(12,20,40,0.72);--border-subtle:rgba(129,151,166,0.14);--border-glow:rgba(77,120,240,0.38);--text-primary:#F3F6FA;--text-secondary:#A3B3C0;--text-muted:#6F8291;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-card{max-width:320px;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:20px;padding:2rem 1.5rem;transition:transform .45s var(--ease-out),border-color .3s ease,box-shadow .45s var(--ease-out);} .ds-card:hover{transform:translateY(-4px);border-color:var(--border-glow);box-shadow:0 14px 40px -12px rgba(0,0,0,0.6);} .ds-card-title{font-family:Outfit,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:1.2rem;font-weight:700;letter-spacing:-0.025em;color:var(--text-primary);margin:0 0 0.6rem;} .ds-card-desc{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:0.9rem;line-height:1.6;color:var(--text-secondary);margin:0 0 1rem;} .ds-tag{display:inline-block;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:0.75rem;font-weight:600;color:var(--stone-light);padding:0.25rem 0.6rem;border-radius:8px;background:rgba(var(--stone-rgb),0.1);border:1px solid rgba(var(--stone-rgb),0.25);}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Sticky blurred header; links draw a blue-to-scarlet underline.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-brand\">Movewise <span class=\"ds-brand-tag\">CS491</span></span><a class=\"ds-link is-active\" href=\"#\">About</a><a class=\"ds-link\" href=\"#\">How It Works</a><a class=\"ds-link\" href=\"#\">Fit Simulator</a></nav>",
+      "css": ":host{--egyptian:#1034A6;--egyptian-600:#1A43C4;--egyptian-bright:#4D78F0;--stone-light:#B9C8D3;--scarlet:#FF2400;--scarlet-soft:#FF5A3D;--egyptian-rgb:16,52,166;--egyptian-bright-rgb:77,120,240;--stone-rgb:129,151,166;--scarlet-rgb:255,36,0;--bg-card:rgba(12,20,40,0.72);--border-subtle:rgba(129,151,166,0.14);--border-glow:rgba(77,120,240,0.38);--text-primary:#F3F6FA;--text-secondary:#A3B3C0;--text-muted:#6F8291;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-nav{display:flex;align-items:center;gap:1.15rem;padding:1rem 1.5rem;background:rgba(5,9,19,0.82);backdrop-filter:blur(16px) saturate(140%);border-bottom:1px solid rgba(var(--stone-rgb),0.14);} .ds-brand{font-family:Outfit,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:-0.02em;color:var(--text-primary);margin-right:auto;display:flex;align-items:center;gap:0.5rem;} .ds-brand-tag{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:0.65rem;padding:0.2rem 0.5rem;background:rgba(var(--stone-rgb),0.12);border:1px solid rgba(var(--stone-rgb),0.4);color:var(--stone-light);border-radius:9999px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;} .ds-link{position:relative;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text-secondary);text-decoration:none;font-size:0.92rem;font-weight:500;padding:0.35rem 0;transition:color .3s ease;} .ds-link::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--egyptian-bright),var(--scarlet));transform:scaleX(0);transform-origin:100% 50%;transition:transform .5s var(--ease-out);} .ds-link:hover,.ds-link.is-active{color:var(--text-primary);} .ds-link:hover::after,.ds-link.is-active::after{transform:scaleX(1);transform-origin:0 50%;} .ds-link:focus-visible{outline:2px solid var(--scarlet-soft);outline-offset:3px;}"
+    },
+    {
+      "name": "Choice Tile",
+      "kind": "custom",
+      "refersTo": "choice-tile",
+      "description": "Selectable item tile with a plan-view footprint icon; selected state fills blue.",
+      "html": "<div class=\"ds-tiles\"><button class=\"ds-tile is-active\"><svg class=\"ds-ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M3 6h18v7h-7v5H3z\"/><path d=\"M3 9h15v4\"/></svg>3-Seater Sofa</button><button class=\"ds-tile\"><svg class=\"ds-ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"5\" y=\"3\" width=\"14\" height=\"18\" rx=\"1\"/><rect x=\"7\" y=\"5\" width=\"4\" height=\"3\" rx=\"1\"/><rect x=\"13\" y=\"5\" width=\"4\" height=\"3\" rx=\"1\"/><path d=\"M5 10h14\"/></svg>King Size Bed</button></div>",
+      "css": ":host{--egyptian:#1034A6;--egyptian-600:#1A43C4;--egyptian-bright:#4D78F0;--stone-light:#B9C8D3;--scarlet:#FF2400;--scarlet-soft:#FF5A3D;--egyptian-rgb:16,52,166;--egyptian-bright-rgb:77,120,240;--stone-rgb:129,151,166;--scarlet-rgb:255,36,0;--bg-card:rgba(12,20,40,0.72);--border-subtle:rgba(129,151,166,0.14);--border-glow:rgba(77,120,240,0.38);--text-primary:#F3F6FA;--text-secondary:#A3B3C0;--text-muted:#6F8291;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,160px));gap:0.75rem;} .ds-ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;color:var(--stone-light);flex-shrink:0;} .ds-tile.is-active .ds-ico{color:#fff;} .ds-tile{display:flex;align-items:center;gap:0.6rem;text-align:left;background:rgba(var(--stone-rgb),0.06);border:1px solid var(--border-subtle);border-radius:14px;padding:0.8rem 1rem;color:var(--text-secondary);font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;transition:background .3s ease,border-color .3s ease,color .3s ease,box-shadow .35s ease,transform .2s ease;} .ds-tile:hover{background:rgba(var(--stone-rgb),0.12);color:var(--text-primary);border-color:rgba(var(--stone-rgb),0.35);} .ds-tile:active{transform:scale(0.97);} .ds-tile.is-active{background:rgba(var(--egyptian-rgb),0.45);border-color:var(--egyptian-bright);color:#fff;box-shadow:0 0 22px -4px rgba(var(--egyptian-bright-rgb),0.55);} .ds-tile:focus-visible{outline:2px solid var(--scarlet-soft);outline-offset:3px;}"
+    },
+    {
+      "name": "Range Slider",
+      "kind": "input",
+      "refersTo": "range-slider",
+      "description": "Doorway-width slider with scarlet thumb and halo.",
+      "html": "<label class=\"ds-range\"><span class=\"ds-range-label\">Clear Doorway Width <b>85 cm</b></span><input type=\"range\" min=\"60\" max=\"120\" value=\"85\"></label>",
+      "css": ":host{--egyptian:#1034A6;--egyptian-600:#1A43C4;--egyptian-bright:#4D78F0;--stone-light:#B9C8D3;--scarlet:#FF2400;--scarlet-soft:#FF5A3D;--egyptian-rgb:16,52,166;--egyptian-bright-rgb:77,120,240;--stone-rgb:129,151,166;--scarlet-rgb:255,36,0;--bg-card:rgba(12,20,40,0.72);--border-subtle:rgba(129,151,166,0.14);--border-glow:rgba(77,120,240,0.38);--text-primary:#F3F6FA;--text-secondary:#A3B3C0;--text-muted:#6F8291;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-range{display:flex;flex-direction:column;gap:0.6rem;max-width:320px;} .ds-range-label{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:0.88rem;font-weight:600;color:var(--text-secondary);display:flex;justify-content:space-between;} .ds-range-label b{color:var(--stone-light);} .ds-range input{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;background:rgba(var(--stone-rgb),0.2);outline:none;} .ds-range input::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--scarlet);cursor:pointer;box-shadow:0 0 0 4px rgba(var(--scarlet-rgb),0.18),0 0 12px rgba(var(--scarlet-rgb),0.7);transition:box-shadow .3s ease;} .ds-range input::-webkit-slider-thumb:hover{box-shadow:0 0 0 7px rgba(var(--scarlet-rgb),0.16),0 0 16px rgba(var(--scarlet-rgb),0.8);} .ds-range input::-moz-range-thumb{width:18px;height:18px;border:none;border-radius:50%;background:var(--scarlet);box-shadow:0 0 0 4px rgba(var(--scarlet-rgb),0.18),0 0 12px rgba(var(--scarlet-rgb),0.7);} .ds-range input:focus-visible{outline:2px solid var(--scarlet-soft);outline-offset:6px;}"
+    },
+    {
+      "name": "Status Banner",
+      "kind": "custom",
+      "refersTo": "status-banner",
+      "description": "Simulator verdict: pass (blue), warn (amber), fail (scarlet).",
+      "html": "<div class=\"ds-status-stack\"><div class=\"ds-status ds-pass\">Feasible Pass (Straight Passage)</div><div class=\"ds-status ds-warn\">Tight Fit: Tilt Required</div><div class=\"ds-status ds-fail\">Blocked at Doorway</div></div>",
+      "css": ":host{--egyptian:#1034A6;--egyptian-600:#1A43C4;--egyptian-bright:#4D78F0;--stone-light:#B9C8D3;--scarlet:#FF2400;--scarlet-soft:#FF5A3D;--egyptian-rgb:16,52,166;--egyptian-bright-rgb:77,120,240;--stone-rgb:129,151,166;--scarlet-rgb:255,36,0;--bg-card:rgba(12,20,40,0.72);--border-subtle:rgba(129,151,166,0.14);--border-glow:rgba(77,120,240,0.38);--text-primary:#F3F6FA;--text-secondary:#A3B3C0;--text-muted:#6F8291;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-status-stack{display:flex;flex-direction:column;gap:0.6rem;max-width:360px;} .ds-status{padding:0.85rem 1.25rem;border-radius:14px;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-weight:600;font-size:0.95rem;} .ds-pass{background:rgba(var(--egyptian-bright-rgb),0.14);border:1px solid rgba(var(--egyptian-bright-rgb),0.45);color:#C9D6FF;} .ds-warn{background:rgba(242,169,59,0.13);border:1px solid rgba(242,169,59,0.42);color:#FCD89A;} .ds-fail{background:rgba(var(--scarlet-rgb),0.13);border:1px solid rgba(var(--scarlet-rgb),0.45);color:#FFB3A6;}"
+    },
+    {
+      "name": "Pipeline Track",
+      "kind": "custom",
+      "refersTo": "pipeline-track",
+      "description": "Signature route line: fills blue to scarlet, nodes light in sequence (hover to fill).",
+      "html": "<div class=\"ds-track\"><div class=\"ds-fill\"></div><span class=\"ds-node\" style=\"left:12.5%\"></span><span class=\"ds-node\" style=\"left:37.5%\"></span><span class=\"ds-node\" style=\"left:62.5%\"></span><span class=\"ds-node ds-node-end\" style=\"left:87.5%\"></span></div>",
+      "css": ":host{--egyptian:#1034A6;--egyptian-600:#1A43C4;--egyptian-bright:#4D78F0;--stone-light:#B9C8D3;--scarlet:#FF2400;--scarlet-soft:#FF5A3D;--egyptian-rgb:16,52,166;--egyptian-bright-rgb:77,120,240;--stone-rgb:129,151,166;--scarlet-rgb:255,36,0;--bg-card:rgba(12,20,40,0.72);--border-subtle:rgba(129,151,166,0.14);--border-glow:rgba(77,120,240,0.38);--text-primary:#F3F6FA;--text-secondary:#A3B3C0;--text-muted:#6F8291;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-track{position:relative;height:4px;margin:2rem 1rem;max-width:520px;background:rgba(var(--stone-rgb),0.18);border-radius:2px;} .ds-fill{position:absolute;inset:0;border-radius:2px;background:linear-gradient(90deg,var(--egyptian-bright),var(--stone-light) 60%,var(--scarlet));box-shadow:0 0 14px rgba(var(--egyptian-bright-rgb),0.5);transform-origin:0 50%;transform:scaleX(0.35);transition:transform 1.6s var(--ease-out);} .ds-track:hover .ds-fill{transform:scaleX(1);} .ds-node{position:absolute;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--egyptian);border:2px solid var(--egyptian-bright);box-shadow:0 0 0 5px rgba(var(--egyptian-bright-rgb),0.12),0 0 16px rgba(var(--egyptian-bright-rgb),0.6);} .ds-node-end{background:#3a0d06;border-color:var(--scarlet);box-shadow:0 0 0 5px rgba(var(--scarlet-rgb),0.12),0 0 18px rgba(var(--scarlet-rgb),0.7);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Verified Route",
+    "overview": "Every piece of furniture follows one checked path: out the old door, down the stairs, into the truck and into its place in the new room. The visual system is drawn the way an architect draws that path: ink on drafting paper. The page is a warm paper field with a faint graph grid; cards are lighter sheets laid on top; walls, doors and dimensions are ink lines; construction orange marks the route and the thing you are acting on; green appears only where something has actually been verified.\n\nThe hero is a drawing sheet, not a picture: an animated floor plan where a LiDAR scanner maps the rooms and one item travels through every doorway. The pipeline track, the deliverables route, the fit simulator and the cursor truck all speak this one plan-drawing language.\n\nThe page is calm when nothing is happening and reacts precisely when touched. On hover, sheets lift a few pixels, their edge darkens and an orange edge highlight follows the pointer. Motion is long and decelerating (expo-out); nothing bounces. Density is that of a product presentation: generous section spacing (7rem), centered section heads (headline and lead, no eyebrow label), and content in 2–5 column grids.\n\nRejected directions: the dark \"AI startup\" night field with blue/violet glows, gradients of any kind on text, buttons, logos or route lines, neon halos, glass blur as decoration, eyebrow labels above headings, and emoji or unicode glyphs as icons.",
+    "keyCharacteristics": [
+      "Warm drafting paper (`paper`) with a 44px graph grid that fades out below the hero.",
+      "Ink for structure and text; construction orange for the route and the action; green only for verified states.",
+      "Lighter sheets (`sheet`) with hairline rules; no glows anywhere.",
+      "Plan-drawing imagery: walls with section hatch, door swings, dimension lines with ticks, dashed planned routes.",
+      "Thin-line SVG icons (1.75 stroke, round caps); furniture as floor-plan footprints.",
+      "Long, decelerating motion; fully calmed under `prefers-reduced-motion`."
+    ],
+    "rules": [
+      {
+        "name": "The Orange Points Rule",
+        "body": "Orange marks the route and the thing being acted on. It owns one deliberate region per screen at most (the primary button, the comparison highlight column, the selected tile) and never decorates a surface that carries no action or route.",
+        "section": "colors"
+      },
+      {
+        "name": "The Green Means Verified Rule",
+        "body": "Green appears only where something is confirmed: a passing verdict, a working prototype, a finished deliverable. Planned capabilities never get green; they get an orange route arrow or a hollow node.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tint-on-Tint Rule",
+        "body": "Text on a tinted fill uses the deep ink of the same hue (`verified` on `verified-tint`, `warn-ink` on `warn-tint`, `alert` on `alert-tint`, `ink` on `accent-tint`), never a gray.",
+        "section": "colors"
+      },
+      {
+        "name": "The Measured Number Rule",
+        "body": "A number that comes out of the system (a measurement, clearance or count) is set in IBM Plex Mono. Prose numbers stay in the body face.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tight Heading Rule",
+        "body": "Every Archivo heading uses negative tracking (-0.025em, or -0.035em for display). Body text never does.",
+        "section": "typography"
+      },
+      {
+        "name": "The Weight Means Importance Rule",
+        "body": "At rest only the centerpieces cast a shadow. Everything else earns depth on hover or when selected. No colored halos, ever.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep the page on Paper with Sheet cards; depth comes from tone steps, rules and soft warm shadows.",
+      "**Do** draw processes, timelines and flows as plan drawings: ink lines, dashed planned routes, nodes whose fill states maturity.",
+      "**Do** keep orange for the route and the action, and keep it to one deliberate region per screen.",
+      "**Do** use green only for things that are verified.",
+      "**Do** set system-produced measurements in IBM Plex Mono.",
+      "**Do** use the expo-out curve (`cubic-bezier(0.16, 1, 0.3, 1)`) and keep every animation calm under `prefers-reduced-motion`.",
+      "**Do** use the shared thin-line SVG icon set (`.icon`, 1.75 stroke) for every icon.",
+      "**Do** show the numbers a verdict rests on, and keep any drawing on the same scale as the verdict.",
+      "**Do** state maturity where a capability is described: Working prototype or Planned; write planned capabilities in the future tense everywhere on the page."
+    ],
+    "donts": [
+      "**Don't** bring back the dark night field, blue or violet accents, or neon glows.",
+      "**Don't** use gradients on text, buttons, logos, route lines or progress bars; the only gradients allowed are the graph-paper grid and dashed patterns.",
+      "**Don't** use emoji or unicode glyphs (✓ ✕ ● ○) as icons.",
+      "**Don't** put an eyebrow badge above a section heading.",
+      "**Don't** use colored borders thicker than 1px on cards, callouts or list items.",
+      "**Don't** give a card a resting shadow unless it is a centerpiece.",
+      "**Don't** put gray text on a tinted fill; use the deep ink of that hue.",
+      "**Don't** set small text in Construction Orange; use Orange Ink.",
+      "**Don't** use bouncy or springy easing; motion decelerates and settles."
+    ]
+  }
+}
